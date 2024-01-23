@@ -30,6 +30,7 @@ public:
 	static CBoss* Create(void);
 
 private:
+	int m_nLife;
 };
 
 #endif

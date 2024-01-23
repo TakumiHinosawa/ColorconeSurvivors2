@@ -250,6 +250,9 @@ bool CBullet3D::CollisionEnemy(void)
 					//’e‚ÌI—¹ˆ—
 					Uninit();
 
+					//ƒqƒbƒgˆ—
+					pObj->Hit();
+
 					//“G‚ÌI—¹ˆ—
 					//pObj->Uninit();
 

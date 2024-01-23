@@ -29,10 +29,15 @@ public:
 	void Hit(void);
 	static int GetKillCount(void);
 	static void SetKillCount(int nNum);
+	void CollisionBuilding(void);
 	static CEnemyX *Create(void);
 
 private:
 	static int m_Count;
+	D3DXVECTOR3 m_OldPos;
+	D3DXVECTOR3 m_VtxMax;
+	D3DXVECTOR3 m_VtxMin;
+	D3DXVECTOR3 m_BuildingPos;
 };
 
 #endif

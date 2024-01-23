@@ -24,7 +24,7 @@ CEnemyX* CSpawner::m_pEnemy = nullptr;
 //=========================================================================================
 //マクロ定義
 //=========================================================================================
-#define ENEMYMOVE	(2.0f)		//移動量
+#define ROTATION	(1.2f)		//移動量
 
 //*****************************************************************************************
 //静的メンバ変数
@@ -59,7 +59,7 @@ HRESULT CSpawner::Init(void)
 	SetType(TYPE_SPAWNER);
 
 	//位置更新
-	SetPosition(D3DXVECTOR3(0.0f, 40.0f, -200.0f));
+	SetPosition(D3DXVECTOR3(0.0f, -200.0f, -200.0f));
 
 	//********************************************************
 	//エネミー
@@ -101,76 +101,17 @@ void CSpawner::Update(void)
 	//デバッグ情報取得
 	CDebugProc* pDebug = CManager::GetManager()->GetDebugProc();
 
-	//位置情報取得処理
-	D3DXVECTOR3 pos = CObjectX::GetPosition();
-
-	//変数宣言
-	D3DXVECTOR3 Dest;
-	float fRotMove, fRotDest, fRotDiff;
-
-	//エネミー位置取得
-	D3DXVECTOR3 EnemyPos = CObjectX::GetPosition();
-	EnemyPos.y = 40.0f;
-
 	//エネミー角度取得
 	D3DXVECTOR3 EnemyRot = CObjectX::GetRot();
 
-	//エネミー移動量取得
-	D3DXVECTOR3 EnemyMove = CObjectX::GetMove();
-
-	//プレイヤー情報取得
-	CPlayerX* pPlayer = CGame::GetPlayer();
-	D3DXVECTOR3 PlayerPos = pPlayer->GetPosition();
-
-	Dest = PlayerPos - EnemyPos;			//目標の向き
-	fRotMove = EnemyRot.y;					//現在の移動方向(角度)
-	fRotDest = atan2f(Dest.x, Dest.z);		//目標の移動方向(角度)
-	fRotDiff = fRotDest - fRotMove;			//目標の移動方向までの差分
-
-	//移動方向の補正
-	if (fRotDiff > D3DX_PI || fRotDiff < -D3DX_PI)
-	{
-		if (fRotDiff > D3DX_PI)
-		{
-			fRotDiff += -D3DX_PI * 2;
-		}
-		else if (fRotDiff < -D3DX_PI)
-		{
-			fRotDiff += D3DX_PI * 2;
-		}
-	}
-
-	//移動方向(角度)の補正
-	EnemyRot.y += fRotDiff * 0.05f;
-
-	//移動方向の補正
-	if (EnemyRot.y > D3DX_PI || EnemyRot.y < -D3DX_PI)
-	{
-		if (EnemyRot.y > D3DX_PI)
-		{
-			EnemyRot.y += -D3DX_PI * 2;
-		}
-		else if (EnemyRot.y < -D3DX_PI)
-		{
-			EnemyRot.y += D3DX_PI * 2;
-		}
-	}
-
-	//移動量補正
-	EnemyMove.x = sinf(EnemyRot.y) * ENEMYMOVE;
-	EnemyMove.z = cosf(EnemyRot.y) * ENEMYMOVE;
-
-	//移動量加算
-	EnemyPos += EnemyMove;
-
-	//位置更新
-	SetPosition(EnemyPos);
+	// 毎フレーム、回転角度を増加
+	EnemyRot.y += ROTATION * 0.016666f;
 
 	//向き更新
 	SetRot(EnemyRot);
 
 	//デバッグ表示
-	pDebug->Print("[エネミー] ( X:%f Y:%f Z:%f )\n\n", pos.x, pos.y, pos.z);
+	pDebug->Print("[スポナー] ( X:%f Y:%f Z:%f )\n\n", EnemyRot.x, EnemyRot.y, EnemyRot.z);
 }
 
 //=========================================================================================

@@ -59,7 +59,7 @@ HRESULT CPlayerX::Init(void)
 	//種類の設定
 	SetType(TYPE_PLAYER);
 
-	D3DXVECTOR3 pos = { 0.0f,10.0f,-200.0f };
+	D3DXVECTOR3 pos = { 0.0f,0.0f,-200.0f };
 	CObjectX::SetPosition(pos);
 
 	return S_OK;
@@ -399,9 +399,6 @@ void CPlayerX::CollisionBuilding(void)
 
 	//プレイヤーの移動情報取得
 	D3DXVECTOR3 PlayerMove = GetMove();
-
-	//プレイヤーの現在の位置を取得
-	D3DXVECTOR3 PlayerPosOld = GetPositionOld();
 
 	//プレイヤーのサイズ保管用変数
 	D3DXVECTOR3 vtxMin, vtxMax;

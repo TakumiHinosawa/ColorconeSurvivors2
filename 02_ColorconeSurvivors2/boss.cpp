@@ -4,7 +4,6 @@
 // Author:日野澤匠泉	[boss.cpp]
 //
 //=========================================================================================
-#include "main.h"
 #include "boss.h"
 #include "manager.h"
 #include "renderer.h"
@@ -14,6 +13,7 @@
 #include "score.h"
 #include "time.h"
 #include "game.h"
+#include "spawner.h"
 
 //=========================================================================================
 //マクロ定義
@@ -29,6 +29,8 @@
 CBoss::CBoss()
 {
 	m_nLife = 100;
+	m_nCtr = 0;
+	m_nSpawnCtr = 0;
 }
 
 //=========================================================================================
@@ -67,6 +69,8 @@ void CBoss::Uninit(void)
 //=========================================================================================
 void CBoss::Update(void)
 {
+	m_nCtr++;
+
 	//デバッグ情報取得
 	CDebugProc* pDebug = CManager::GetManager()->GetDebugProc();
 
@@ -79,6 +83,18 @@ void CBoss::Update(void)
 
 	//位置更新
 	SetPosition(BossPos);
+
+	float fRandX, fRandZ;
+	fRandX = (float)(rand() % 801) - 400.0f;
+	fRandZ = (float)(rand() % 801) - 400.0f;
+
+	if (m_nCtr >= 300 && m_nSpawnCtr < NUM_SPAWNER)
+	{
+		CSpawner* pSpawner = CSpawner::Create(D3DXVECTOR3(fRandX,-190.0f, fRandZ));
+
+		m_nCtr = 0;
+		m_nSpawnCtr++;
+	}
 
 	//デバッグ表示
 	pDebug->Print("[ボス] ( X:%f Y:%f Z:%f )\n\n", pos.x, pos.y, pos.z);

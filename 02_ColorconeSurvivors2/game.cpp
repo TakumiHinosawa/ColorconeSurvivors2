@@ -25,6 +25,7 @@
 #include "explosion3D.h"
 #include "spawner.h"
 #include "skybox.h"
+#include "effect.h"
 #include <stdio.h>
 
 //*****************************************************************************************
@@ -37,7 +38,6 @@ CCamera *CGame::m_pCamera = nullptr;
 CLight *CGame::m_pLight = nullptr;
 CObjectX *CGame::m_pObjectX = nullptr;
 CBuilding *CGame::m_apBuilding[NUM_BUILD] = {};
-CSpawner* CGame::m_pSpawner = nullptr;
 CSkybox* CGame::m_pSkybox = nullptr;
 
 //=========================================================================================
@@ -103,6 +103,7 @@ HRESULT CGame::Init(void)
 	CNumber::Load();
 	CBullet3D::Load();
 	CExplosion3D::Load();
+	CEffect::Load();
 
 	//********************************************************
 	//プレイヤー
@@ -112,16 +113,6 @@ HRESULT CGame::Init(void)
 
 		//プレイヤー作成
 		m_pPlayerX = CPlayerX::Create();
-	}
-
-	//********************************************************
-	//スポナー
-	//********************************************************
-	if (m_pSpawner == nullptr)
-	{//使用されていないとき
-
-		//プレイヤー作成
-		m_pSpawner = CSpawner::Create();
 	}
 
 	//********************************************************
@@ -261,16 +252,6 @@ void CGame::Uninit(void)
 	}
 
 	//********************************************************
-	//スポナー
-	//********************************************************
-	if (m_pSpawner != nullptr)
-	{//使用されているとき
-
-		//初期化
-		m_pSpawner = nullptr;
-	}
-
-	//********************************************************
 	//スカイボックス
 	//********************************************************
 	if (m_pSkybox == nullptr)
@@ -307,6 +288,7 @@ void CGame::Uninit(void)
 	CNumber::Unload();
 	CBullet3D::Unload();
 	CExplosion3D::Unload();
+	CEffect::Unload();
 }
 
 //=============================================================================
@@ -452,19 +434,9 @@ CBuilding *CGame::GetBuilding(int nIdx)
 }
 
 //=========================================================================================
-//スポナーの情報取得
-//=========================================================================================
-CSpawner* CGame::GetSpawner(void)
-{
-	return m_pSpawner;
-}
-
-//=========================================================================================
 //スカイボックスの情報取得
 //=========================================================================================
 CSkybox* CGame::GetSkybox(void)
 {
 	return m_pSkybox;
 }
-
-

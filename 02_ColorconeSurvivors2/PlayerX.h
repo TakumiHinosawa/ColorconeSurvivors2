@@ -30,17 +30,15 @@ public:
 	void Controller(void);
 	static CPlayerX *Create(void);
 	void CollisionBuilding(void);
+	void CollideBoss(void);
 	void CollideEnemy(void);
+	void Knockback(float knockbackForce, float angle);
 
 private:
-
-	// --- デバッグ用 --- //
 	D3DXVECTOR3 m_OldPos;
 	D3DXVECTOR3 m_VtxMax;
 	D3DXVECTOR3 m_VtxMin;
 	D3DXVECTOR3 m_BuildingPos;
-	// ----------------- //
-
 	int m_nTiming;
 };
 

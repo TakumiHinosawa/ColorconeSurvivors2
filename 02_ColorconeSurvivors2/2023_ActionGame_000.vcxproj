@@ -156,10 +156,12 @@
     <ClCompile Include="bullet3D.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="debugproc.cpp" />
+    <ClCompile Include="effect.cpp" />
     <ClCompile Include="EnemyX.cpp" />
     <ClCompile Include="explosion3D.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="hitpoint.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="main.cpp" />
@@ -171,6 +173,7 @@
     <ClCompile Include="object3D.cpp" />
     <ClCompile Include="objectbillboard.cpp" />
     <ClCompile Include="objectX.cpp" />
+    <ClCompile Include="particle.cpp" />
     <ClCompile Include="playerX.cpp" />
     <ClCompile Include="ranking.cpp" />
     <ClCompile Include="rankingnum.cpp" />
@@ -192,9 +195,11 @@
     <ClInclude Include="bullet3D.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="debugproc.h" />
+    <ClInclude Include="effect.h" />
     <ClInclude Include="enemyX.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="hitpoint.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="main.h" />
@@ -206,6 +211,7 @@
     <ClInclude Include="object3D.h" />
     <ClInclude Include="objectbillboard.h" />
     <ClInclude Include="objectX.h" />
+    <ClInclude Include="particle.h" />
     <ClInclude Include="PlayerX.h" />
     <ClInclude Include="ranking.h" />
     <ClInclude Include="rankingnum.h" />

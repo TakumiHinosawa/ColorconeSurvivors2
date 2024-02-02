@@ -11,7 +11,7 @@
 //インクルード
 //*****************************************************************************************
 #include "main.h"
-#include "objectX.h"
+#include "spawner.h"
 
 //*****************************************************************************************
 //オブジェクトXクラス
@@ -38,6 +38,8 @@ private:
 	D3DXVECTOR3 m_VtxMax;
 	D3DXVECTOR3 m_VtxMin;
 	D3DXVECTOR3 m_BuildingPos;
+
+	void PushoutCollision(void);
 };
 
 #endif

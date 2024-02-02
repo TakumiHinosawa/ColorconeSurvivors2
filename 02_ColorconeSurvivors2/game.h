@@ -30,7 +30,6 @@ class CDebugProc;
 class CPlayerX;
 class CBoss;
 class CObject;
-class CSpawner;
 class CSkybox;
 
 //*****************************************************************************************
@@ -55,7 +54,6 @@ public:
 	static CLight *GetLight(void);
 	static CObjectX *GetObjectX(void);
 	static CBuilding *GetBuilding(int nIdx);
-	static CSpawner* GetSpawner(void);
 	static CSkybox* GetSkybox(void);
 
 private:
@@ -66,7 +64,6 @@ private:
 	static CLight *m_pLight;
 	static CObjectX *m_pObjectX;
 	static CBuilding *m_apBuilding[NUM_BUILD];
-	static CSpawner* m_pSpawner;
 	static CSkybox* m_pSkybox;
 	int m_nCtr;
 };

@@ -25,9 +25,10 @@
 #define JUMPHEIGHT (16.0f)		//ジャンプ力
 #define AIRBORNE (20)			//浮遊時間
 #define ROTSPEED (0.7f)			//回転速度
-#define TIMING	 (7)			//弾発射の速度
+#define TIMING	 (6)			//弾発射の速度
 #define BULLETSPEED	(5.0f)		//弾速
 #define HEIGHT		(10.0f)		//高さ
+#define KNOCKBACK	(10.0f)
 
 //=========================================================================================
 //プレイヤーのコンストラクタ	
@@ -505,13 +506,14 @@ void CPlayerX::CollisionBuilding(void)
 		}
 	}
 
-	CollideEnemy();
-
 	//位置情報更新
 	SetPosition(PlayerPos);
 
 	//移動情報更新
 	SetMove(PlayerMove);
+
+	CollideBoss();
+	CollideEnemy();
 
 	//デバッグ表示
 	pDebug->Print("[建物　座標] ( X:%f Y:%f Z:%f )\n", m_BuildingPos.x, m_BuildingPos.y, m_BuildingPos.z);
@@ -522,9 +524,9 @@ void CPlayerX::CollisionBuilding(void)
 }
 
 //=========================================================================================
-//プレイヤーとエネミーの当たり判定
+//プレイヤーとボスの当たり判定
 //=========================================================================================
-void CPlayerX::CollideEnemy(void)
+void CPlayerX::CollideBoss(void)
 {
 	CObject* pObj;
 
@@ -581,4 +583,95 @@ void CPlayerX::CollideEnemy(void)
 			}
 		}
 	}
+}
+
+//=========================================================================================
+//プレイヤーと敵の当たり判定
+//=========================================================================================
+void CPlayerX::CollideEnemy(void)
+{
+	CObject* pObj;
+
+	//サウンド情報取得
+	//CSound* pSound = CManager::GetSound();
+
+	//位置情報取得
+	D3DXVECTOR3 PlayerPos = GetPosition();
+	D3DXVECTOR3 vtxMin, vtxMax;
+
+	//モデルサイズ取得
+	vtxMin = GetVtxMin();
+	vtxMax = GetVtxMax();
+
+	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
+	{
+		//オブジェクト情報取得
+		pObj = CObject::GetObject(nCnt);
+
+		if (pObj != nullptr)
+		{//使用されているとき
+
+			if (pObj->GetType() == TYPE_ENEMYX)
+			{//敵の時
+
+				//敵の位置取得
+				D3DXVECTOR3 EnemyPos = pObj->GetPosition();
+
+				//頂点座標取得
+				vtxMax = pObj->GetVtxMax();
+				vtxMin = pObj->GetVtxMin();
+
+				if (PlayerPos.x >= EnemyPos.x + vtxMin.x
+					&& PlayerPos.x <= EnemyPos.x + vtxMax.x
+					&& PlayerPos.z >= EnemyPos.z + vtxMin.z
+					&& PlayerPos.z <= EnemyPos.z + vtxMax.z)
+				{//当たり判定
+
+					D3DXVECTOR3 rot = pObj->GetRot();
+
+					//ノックバック
+					Knockback(KNOCKBACK, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
+					
+					//爆発の生成
+					CExplosion3D::Create(EnemyPos);
+
+					//サウンドの再生
+					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+
+					//敵に自分が当たった時
+					pObj->Uninit();
+
+					//スコアの情報取得
+					CScore* pScore = CGame::GetScore();
+
+					//スコアの加算
+					pScore->SubScore(100);
+				}
+			}
+		}
+	}
+}
+
+//=========================================================================================
+//ノックバック処理
+//=========================================================================================
+void CPlayerX::Knockback(float knockbackForce, float angle)
+{
+	D3DXVECTOR3 Velocity = GetMove();
+	D3DXVECTOR3 Pos = GetPosition();
+
+	// 角度をラジアンに変換
+	float radians = angle;
+
+	// ノックバックの速度を計算
+	float knockbackX = knockbackForce * cosf(radians);
+	float knockbackZ = knockbackForce * sinf(radians);
+
+	// 速度を更新してノックバックを適用
+	Velocity.x += knockbackX;
+	Velocity.z += knockbackZ;
+
+	Pos += Velocity;
+	SetMove(Velocity);
+	SetPosition(Pos);
 }

@@ -1,1 +1,25 @@
-﻿  2023_ActionGame_000.vcxproj -> C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\2023_ActionGame_000.exe
+﻿  boss.cpp
+  bullet3D.cpp
+  camera.cpp
+  effect.cpp
+  EnemyX.cpp
+  explosion3D.cpp
+  game.cpp
+  hitpoint.cpp
+  manager.cpp
+  number.cpp
+  objectbillboard.cpp
+  objectX.cpp
+  particle.cpp
+  playerX.cpp
+  renderer.cpp
+  skybox.cpp
+  building.cpp
+  spawner.cpp
+  title.cpp
+  コード生成しています。
+  96 of 405 functions (23.7%) were compiled, the rest were copied from previous compilation.
+    23 functions were new in current compilation
+    39 functions had inline decision re-evaluated but remain unchanged
+  コード生成が終了しました。
+  2023_ActionGame_000.vcxproj -> C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\2023_ActionGame_000.exe

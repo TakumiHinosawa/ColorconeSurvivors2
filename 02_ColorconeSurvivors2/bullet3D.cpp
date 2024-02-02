@@ -34,7 +34,7 @@ LPDIRECT3DTEXTURE9 CBullet3D::m_pTexture = NULL;
 CBullet3D::CBullet3D()
 {//各種初期化
 
-	m_nLife = 150;
+	m_nLife = 50;
 }
 
 //=========================================================================================
@@ -109,7 +109,7 @@ void CBullet3D::Uninit(void)
 void CBullet3D::Update(void)
 {
 	//サウンドの取得
-	CSound *pSound = CManager::GetManager()->GetSound();
+	CSound* pSound = CManager::GetManager()->GetSound();
 
 	//寿命を減らす
 	m_nLife--;
@@ -129,9 +129,20 @@ void CBullet3D::Update(void)
 	//弾の設定処理
 	CObjectBillboard::SetBullet(pos, move);
 
-	if (CollisionEnemy() == false)
-	{// 敵と弾が当たっていないとき
-
+	if (CollisionEnemy() == true)
+	{
+		return;
+	}
+	else if (CollisionBoss() == true)
+	{
+		return;
+	}
+	else if (CollisionSpawner() == true)
+	{
+		return;
+	}
+	else
+	{
 		if (m_nLife <= 0)
 		{// 0以下の時
 
@@ -140,9 +151,8 @@ void CBullet3D::Update(void)
 
 			//終了処理
 			Uninit();
-
-			return;
 		}
+		return;
 	}
 }
 
@@ -208,7 +218,7 @@ bool CBullet3D::CollisionEnemy(void)
 
 	//位置情報取得
 	D3DXVECTOR3 BulletPos = GetPosition();
-	D3DXVECTOR3 vtxMin,vtxMax;
+	D3DXVECTOR3 vtxMin, vtxMax;
 
 	//モデルサイズ取得
 	vtxMin = GetVtxMin();
@@ -225,7 +235,7 @@ bool CBullet3D::CollisionEnemy(void)
 		if (pObj != NULL)
 		{//使用されているとき
 
-			if (pObj->GetType() == TYPE_BOSS )
+			if (pObj->GetType() == TYPE_ENEMYX )
 			{//敵の時
 
 				//敵の位置取得
@@ -253,9 +263,6 @@ bool CBullet3D::CollisionEnemy(void)
 					//ヒット処理
 					pObj->Hit();
 
-					//敵の終了処理
-					//pObj->Uninit();
-
 					//スコアの情報取得
 					CScore *pScore = CGame::GetScore();
 
@@ -269,6 +276,147 @@ bool CBullet3D::CollisionEnemy(void)
 		}
 	}
 
+	//当たっていないときfalseにを返す
+	return false;
+}
+
+//=========================================================================================
+//弾の敵の当たり判定
+//=========================================================================================
+bool CBullet3D::CollisionBoss(void)
+{
+	CObject* pObj;
+
+	//位置情報取得
+	D3DXVECTOR3 BulletPos = GetPosition();
+	D3DXVECTOR3 vtxMin, vtxMax;
+
+	//モデルサイズ取得
+	vtxMin = GetVtxMin();
+	vtxMax = GetVtxMax();
+
+	//サウンド情報取得
+	CSound* pSound = CManager::GetManager()->GetSound();
+
+	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
+	{
+		//オブジェクト情報取得
+		pObj = CObject::GetObject(nCnt);
+
+		if (pObj != NULL)
+		{//使用されているとき
+
+			if (pObj->GetType() == TYPE_BOSS)
+			{//敵の時
+
+				//敵の位置取得
+				D3DXVECTOR3 EnemyPos = pObj->GetPosition();
+
+				//頂点座標取得
+				vtxMax = pObj->GetVtxMax();
+				vtxMin = pObj->GetVtxMin();
+
+				if (BulletPos.x >= EnemyPos.x + vtxMin.x
+					&& BulletPos.x <= EnemyPos.x + vtxMax.x
+					&& BulletPos.z >= EnemyPos.z + vtxMin.z
+					&& BulletPos.z <= EnemyPos.z + vtxMax.z)
+				{//当たり判定
+
+					//サウンドの生成
+					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+
+					//爆発の生成
+					CExplosion3D::Create(EnemyPos);
+
+					//弾の終了処理
+					Uninit();
+
+					//ヒット処理
+					pObj->Hit();
+
+					//スコアの情報取得
+					CScore* pScore = CGame::GetScore();
+
+					//スコアの加算
+					pScore->AddScore(10);
+
+					//当たった場合はtrueを返す
+					return true;
+				}
+			}
+		}
+	}
+
+	//当たっていないときfalseにを返す
+	return false;
+}
+
+//=========================================================================================
+//弾の敵の当たり判定
+//=========================================================================================
+bool CBullet3D::CollisionSpawner(void)
+{
+	CObject* pObj;
+
+	//位置情報取得
+	D3DXVECTOR3 BulletPos = GetPosition();
+	D3DXVECTOR3 vtxMin, vtxMax;
+
+	//モデルサイズ取得
+	vtxMin = GetVtxMin();
+	vtxMax = GetVtxMax();
+
+	//サウンド情報取得
+	CSound* pSound = CManager::GetManager()->GetSound();
+
+	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
+	{
+		//オブジェクト情報取得
+		pObj = CObject::GetObject(nCnt);
+
+		if (pObj != NULL)
+		{//使用されているとき
+
+			if (pObj->GetType() == TYPE_SPAWNER)
+			{//敵の時
+
+				//敵の位置取得
+				D3DXVECTOR3 EnemyPos = pObj->GetPosition();
+
+				//頂点座標取得
+				vtxMax = pObj->GetVtxMax();
+				vtxMin = pObj->GetVtxMin();
+
+				if (BulletPos.x >= EnemyPos.x + vtxMin.x
+					&& BulletPos.x <= EnemyPos.x + vtxMax.x
+					&& BulletPos.z >= EnemyPos.z + vtxMin.z
+					&& BulletPos.z <= EnemyPos.z + vtxMax.z)
+				{//当たり判定
+
+					//サウンドの生成
+					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+
+					//爆発の生成
+					CExplosion3D::Create(EnemyPos);
+
+					//弾の終了処理
+					Uninit();
+
+					//ヒット処理
+					pObj->Hit();
+
+					//スコアの情報取得
+					CScore* pScore = CGame::GetScore();
+
+					//スコアの加算
+					pScore->AddScore(10);
+
+					//当たった場合はtrueを返す
+					return true;
+				}
+			}
+		}
+	}
 	//当たっていないときfalseにを返す
 	return false;
 }

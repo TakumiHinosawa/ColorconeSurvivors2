@@ -30,7 +30,12 @@ public:
 	static CBoss* Create(void);
 
 private:
+
+	static const int NUM_SPAWNER = 5;
+
 	int m_nLife;
+	int m_nCtr;
+	int m_nSpawnCtr;
 };
 
 #endif

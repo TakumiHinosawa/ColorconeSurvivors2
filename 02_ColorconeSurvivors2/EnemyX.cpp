@@ -15,6 +15,7 @@
 #include "time.h"
 #include "game.h"
 #include "spawner.h"
+#include "particle.h"
 
 //=========================================================================================
 //マクロ定義
@@ -77,9 +78,6 @@ void CEnemyX::Uninit(void)
 //=========================================================================================
 void CEnemyX::Update(void)
 {
-	//デバッグ情報取得
-	CDebugProc *pDebug = CManager::GetManager()->GetDebugProc();
-
 	//位置情報取得処理
 	D3DXVECTOR3 pos = CObjectX::GetPosition();
 
@@ -144,6 +142,12 @@ void CEnemyX::Update(void)
 	//移動量加算
 	EnemyPos += EnemyMove;
 
+	if (EnemyPos.y <= -600.0f)
+	{
+		Uninit();
+		return;
+	}
+
 	//位置更新
 	SetPosition(EnemyPos);
 
@@ -155,9 +159,7 @@ void CEnemyX::Update(void)
 
 	//当たり判定
 	CollisionBuilding();
-
-	//デバッグ表示
-	pDebug->Print("[エネミー] ( X:%f Y:%f Z:%f )\n\n", pos.x, pos.y, pos.z);
+	PushoutCollision();
 }
 
 //=========================================================================================
@@ -202,6 +204,8 @@ void CEnemyX::Hit(void)
 	//スコアの加算
 	pScore->AddScore(100);
 
+	CParticle::Create(GetPosition(), 0);
+
 	//終了処理
 	CEnemyX::Uninit();
 }
@@ -227,9 +231,6 @@ void CEnemyX::SetKillCount(int nNum)
 //=========================================================================================
 void CEnemyX::CollisionBuilding(void)
 {
-	//デバッグ情報取得
-	CDebugProc* pDebug = CManager::GetManager()->GetDebugProc();
-
 	CObject* pObj;
 
 	//サウンド情報取得
@@ -333,11 +334,107 @@ void CEnemyX::CollisionBuilding(void)
 
 						//重力初期化
 						EnemyMove.y = 0.0f;
-
-						pDebug->Print("\n-----------------\n");
-						pDebug->Print("\n乗っている判定 \n\n");
 					}
 				}
+				//現在のサイズの座標を保存する
+				m_VtxMax = BuildingVtxMax;
+				m_VtxMin = BuildingVtxMin;
+
+				//位置情報を保存
+				m_BuildingPos = BuildingPosition;
+			}
+		}
+	}
+
+	//位置情報更新
+	SetPosition(EnemyPos);
+
+	//移動情報更新
+	SetMove(EnemyMove);
+}
+
+//=========================================================================================
+//敵同士の当たり判定処理
+//=========================================================================================
+void CEnemyX::PushoutCollision(void)
+{
+	CObject* pObj;
+
+	//サウンド情報取得
+	CSound* pSound = CManager::GetManager()->GetSound();
+
+	//エネミーの位置情報取得
+	D3DXVECTOR3 EnemyPos = GetPosition();
+
+	//エネミーの移動情報取得
+	D3DXVECTOR3 EnemyMove = GetMove();
+
+	//エネミーのサイズ保管用変数
+	D3DXVECTOR3 vtxMin = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	D3DXVECTOR3 vtxMax = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
+	//エネミーのサイズ取得
+	vtxMin = GetVtxMin();
+	vtxMax = GetVtxMax();
+
+	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
+	{
+		//オブジェクト情報取得
+		pObj = CObject::GetObject(nCnt);
+
+		if (pObj != NULL)
+		{//使用されているとき
+
+			if (pObj->GetType() == TYPE_ENEMYX)
+			{//建物の時
+
+				//建物の位置取得
+				D3DXVECTOR3 BuildingPosition = pObj->GetPosition();
+
+				//建物のサイズを取得
+				D3DXVECTOR3 BuildingVtxMax = pObj->GetVtxMax();
+				D3DXVECTOR3 BuildingVtxMin = pObj->GetVtxMin();
+
+				//------------------------------------------------------------------------
+				//	幅の判定
+				//------------------------------------------------------------------------
+				if (BuildingPosition.x + BuildingVtxMin.x <= EnemyPos.x + vtxMax.x
+					&& BuildingPosition.x + BuildingVtxMax.x >= EnemyPos.x + vtxMin.x
+					&& BuildingPosition.y + BuildingVtxMin.y <= m_OldPos.y + vtxMax.y
+					&& BuildingPosition.y + BuildingVtxMax.y >= m_OldPos.y + vtxMin.y)
+				{//幅の判定
+					if (BuildingPosition.z + BuildingVtxMax.z <= m_OldPos.z + vtxMin.z
+						&& BuildingPosition.z + BuildingVtxMax.z > EnemyPos.z + vtxMin.z)
+					{
+						EnemyPos.z = BuildingPosition.z + BuildingVtxMax.z - vtxMin.z;
+					}
+					if (BuildingPosition.z + BuildingVtxMin.z >= m_OldPos.z + vtxMax.z
+						&& BuildingPosition.z + BuildingVtxMin.z < EnemyPos.z + vtxMax.z)
+					{
+						EnemyPos.z = BuildingPosition.z + BuildingVtxMin.z - vtxMax.z;
+					}
+				}
+
+				//------------------------------------------------------------------------
+				//横の判定
+				//------------------------------------------------------------------------
+				if (BuildingPosition.z + BuildingVtxMin.z <= EnemyPos.z + vtxMax.z
+					&& BuildingPosition.z + BuildingVtxMax.z >= EnemyPos.z + vtxMin.z
+					&& BuildingPosition.y + BuildingVtxMin.y <= m_OldPos.y + vtxMax.y
+					&& BuildingPosition.y + BuildingVtxMax.y >= m_OldPos.y + vtxMin.y)
+				{
+					if (BuildingPosition.x + BuildingVtxMin.x >= m_OldPos.x + vtxMax.x
+						&& BuildingPosition.x + BuildingVtxMin.x < EnemyPos.x + vtxMax.x)
+					{
+						EnemyPos.x = BuildingPosition.x + BuildingVtxMin.x - vtxMax.x - 0.001f;
+					}
+					if (BuildingPosition.x + BuildingVtxMax.x <= m_OldPos.x + vtxMin.x
+						&& BuildingPosition.x + BuildingVtxMax.x > EnemyPos.x + vtxMin.x)
+					{
+						EnemyPos.x = BuildingPosition.x + BuildingVtxMax.x - vtxMin.x;
+					}
+				}
+
 				//現在のサイズの座標を保存する
 				m_VtxMax = BuildingVtxMax;
 				m_VtxMin = BuildingVtxMin;

@@ -150,7 +150,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	}
 
 	//ƒ‚[ƒh‚Ì‰Šú‰»
-	m_pScene = CScene::Create(CScene::MODE_TITLE);
+	m_pScene = CScene::Create(CScene::MODE_GAME);
 
 	return S_OK;
 }

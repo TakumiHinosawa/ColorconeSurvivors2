@@ -31,6 +31,8 @@ public:
 	void Draw(void);
 	void SetPosotion(D3DXVECTOR3 pos, D3DXVECTOR3 move, int nLife);
 	bool CollisionEnemy(void);
+	bool CollisionBoss(void);
+	bool CollisionSpawner(void);
 
 private:
 	static LPDIRECT3DTEXTURE9 m_pTexture;	//テクスチャ情報

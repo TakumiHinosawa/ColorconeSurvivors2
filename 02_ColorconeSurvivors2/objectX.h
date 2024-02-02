@@ -53,6 +53,9 @@ public:
 	void SetVtxMin(D3DXVECTOR3 vtxMin);
 	D3DXVECTOR3 GetVtxMin(void);
 
+	void SetLife(int life);
+	int GetLife(void);
+
 	float GetHeight(void);
 	float GetWidth(void);
 	void SetSize(float fHeight, float fWidth);
@@ -76,8 +79,9 @@ private:
 	D3DXVECTOR3 m_vtxMin;	//モデルの最小値
 	D3DXVECTOR3 m_vtxMax;	//モデルの最大値
 
-	int m_nNumVtx;		//頂点数
-	DWORD m_dwSizeFVF;	//頂点フォーマットのサイズ
+	int m_nNumVtx;			//頂点数
+	int m_nLife;			//ライフ
+	DWORD m_dwSizeFVF;		//頂点フォーマットのサイズ
 	BYTE *m_pVtxBuff;		//頂点バッファのポインタ
 	bool bUse;
 	bool bSwitch;

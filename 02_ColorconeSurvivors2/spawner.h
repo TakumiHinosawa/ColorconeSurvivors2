@@ -14,11 +14,6 @@
 #include "objectX.h"
 
 //*****************************************************************************************
-//前方宣言
-//*****************************************************************************************
-class CEnemyX;
-
-//*****************************************************************************************
 //スポナークラス
 //*****************************************************************************************
 class CSpawner : public CObjectX
@@ -31,17 +26,16 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
+
+	void Spawn(void);
+
 	void Hit(void);
-	static int GetKillCount(void);
-	static void SetKillCount(int nNum);
-	static CSpawner* Create(void);
-	static CEnemyX* GetEnemy(void);
+
+	static CSpawner* Create(D3DXVECTOR3 pos);
 
 private:
-	static int m_Count;
-	static CEnemyX* m_pEnemy;
+	int m_nSpwanCtr;
+	int m_nLife;
 };
 
 #endif
-
-

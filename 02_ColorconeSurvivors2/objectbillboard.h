@@ -39,6 +39,9 @@ public:
 	D3DXVECTOR3 GetMove(void);
 	void SetMove(D3DXVECTOR3 move);
 
+	D3DXCOLOR GetCol(void);
+	void SetCol(D3DXCOLOR col);
+
 	void SetBullet(D3DXVECTOR3 pos, D3DXVECTOR3 move);
 
 	float GetHeight(void);
@@ -57,6 +60,7 @@ private:
 	D3DXVECTOR3 m_pos;		//ˆÊ’u
 	D3DXVECTOR3 m_move;		//ˆÚ“®—Ê
 	D3DXVECTOR3 m_rot;		//Œü‚«
+	D3DXCOLOR m_col;		//ƒJƒ‰[
 
 	float m_fHeight;		//‚‚³
 	float m_fWidth;			//•

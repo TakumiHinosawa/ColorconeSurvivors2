@@ -88,7 +88,7 @@ void CCamera::Update(void)
 	CInputKeyboard *pInputKeyboard = CManager::GetManager()->GetInputKeyboard();
 
 	//コントローラーへのポインタを取得
-	CInputController *pInputController = CManager::GetManager()->GetInputController();
+	//CInputController *pInputController = CManager::GetManager()->GetInputController();
 
 	//デバッグ情報取得
 	CDebugProc *pDebug = CManager::GetManager()->GetDebugProc();

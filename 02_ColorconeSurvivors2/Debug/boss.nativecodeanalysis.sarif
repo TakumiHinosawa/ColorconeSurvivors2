@@ -1,0 +1,1734 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXFLOAT16::value' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 59,
+                  "startColumn": 5,
+                  "endLine": 59,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXFLOAT16@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXFLOAT16::value"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR2::y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 5,
+                  "endLine": 91,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR2@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR2::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR2::x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 91,
+                  "startColumn": 5,
+                  "endLine": 91,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR2@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR2::x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 5,
+                  "endLine": 240,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 5,
+                  "endLine": 240,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::w"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::z' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 5,
+                  "endLine": 240,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::z"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 240,
+                  "startColumn": 5,
+                  "endLine": 240,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 429,
+                  "startColumn": 5,
+                  "endLine": 429,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::w"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 429,
+                  "startColumn": 5,
+                  "endLine": 429,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::z' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 429,
+                  "startColumn": 5,
+                  "endLine": 429,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::z"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::x' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 429,
+                  "startColumn": 5,
+                  "endLine": 429,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::x"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::d' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 475,
+                  "startColumn": 5,
+                  "endLine": 475,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::d"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::b' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 475,
+                  "startColumn": 5,
+                  "endLine": 475,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::b"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::c' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 475,
+                  "startColumn": 5,
+                  "endLine": 475,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::c"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::a' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 475,
+                  "startColumn": 5,
+                  "endLine": 475,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::a"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::a' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 516,
+                  "startColumn": 5,
+                  "endLine": 516,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::a"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::g' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 516,
+                  "startColumn": 5,
+                  "endLine": 516,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::g"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::b' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 516,
+                  "startColumn": 5,
+                  "endLine": 516,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::b"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::r' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+                },
+                "region": {
+                  "startLine": 516,
+                  "startColumn": 5,
+                  "endLine": 516,
+                  "endColumn": 5
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@XZ",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::r"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXFLOAT16::value' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 26,
+                  "startColumn": 14,
+                  "endLine": 26,
+                  "endColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXFLOAT16@@QAE@M@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXFLOAT16::value"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR2::y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 77,
+                  "startColumn": 14,
+                  "endLine": 77,
+                  "endColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR2@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR2::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 517,
+                  "startColumn": 14,
+                  "endLine": 517,
+                  "endColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 517,
+                  "startColumn": 14,
+                  "endLine": 517,
+                  "endColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::w"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXVECTOR4::z' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 517,
+                  "startColumn": 14,
+                  "endLine": 517,
+                  "endColumn": 14
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXVECTOR4@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXVECTOR4::z"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::w' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1068,
+                  "startColumn": 17,
+                  "endLine": 1068,
+                  "endColumn": 17
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::w"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::y' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1068,
+                  "startColumn": 17,
+                  "endLine": 1068,
+                  "endColumn": 17
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::y"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXQUATERNION::z' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1068,
+                  "startColumn": 17,
+                  "endLine": 1068,
+                  "endColumn": 17
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXQUATERNION@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXQUATERNION::z"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::d' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1241,
+                  "startColumn": 12,
+                  "endLine": 1241,
+                  "endColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::d"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::b' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1241,
+                  "startColumn": 12,
+                  "endLine": 1241,
+                  "endColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::b"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXPLANE::c' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1241,
+                  "startColumn": 12,
+                  "endLine": 1241,
+                  "endColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXPLANE@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXPLANE::c"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::a' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1376,
+                  "startColumn": 12,
+                  "endLine": 1376,
+                  "endColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::a"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::g' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1376,
+                  "startColumn": 12,
+                  "endLine": 1376,
+                  "endColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::g"
+          }
+        },
+        {
+          "ruleId": "C26495",
+          "message": {
+            "text": "変数 'D3DXCOLOR::b' が初期化されていません。メンバー変数は必ず初期化してください (type.6)。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+                },
+                "region": {
+                  "startLine": 1376,
+                  "startColumn": 12,
+                  "endLine": 1376,
+                  "endColumn": 12
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "??0D3DXCOLOR@@QAE@PBUD3DXFLOAT16@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ],
+          "properties": {
+            "targetSymbol": "D3DXCOLOR::b"
+          }
+        },
+        {
+          "ruleId": "C28251",
+          "message": {
+            "text": "'joyConfigChanged' に対する整合性のない注釈: このインスタンスには 注釈なし が含まれます。c:\\program files (x86)\\windows kits\\10\\include\\10.0.19041.0\\um\\joystickapi.h(431) を参照してください。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/dinput.h"
+                },
+                "region": {
+                  "startLine": 4321,
+                  "startColumn": 26,
+                  "endLine": 4321,
+                  "endColumn": 26
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "joyConfigChanged@4",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "C26812",
+          "message": {
+            "text": "列挙型 'XAUDIO2_WINDOWS_PROCESSOR_SPECIFIER' は対象範囲外です。'enum' (Enum.3) より 'enum class' を優先します。"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/xaudio2.h"
+                },
+                "region": {
+                  "startLine": 1228,
+                  "startColumn": 18,
+                  "endLine": 1228,
+                  "endColumn": 18
+                }
+              },
+              "logicalLocations": [
+                {
+                  "decoratedName": "?XAudio2Create@@YAJPAPAUIXAudio2@@IW4XAUDIO2_WINDOWS_PROCESSOR_SPECIFIER@@@Z",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "PREfast",
+          "fullName": "PREfast Code Analysis",
+          "version": "14.29.30148.0",
+          "informationUri": "https://aka.ms/cpp/ca"
+        }
+      },
+      "invocations": [
+        {
+          "commandLine": "\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\c1xx.dll\" -ACf{1F7B090C-16DB-4822-966A-A93D26ED4681} -ACpmspft140.dll -Alint -D_PREFAST_ -D_AST_FE_ -Analyze -zm0x00FFD1C0 -il C:\\Users\\student\\AppData\\Local\\Temp\\_CL_140c0a5east -typedil -f boss.cpp -Ze -D_MSC_EXTENSIONS -Zp8 -Gs -pc \\:/ -D_MSC_VER=1929 -D_MSC_FULL_VER=192930148 -D_MSC_BUILD=0 -D_WIN32 -D_M_IX86=600 -D_M_IX86_FP=2 -GR -D_CPPRTTI -nologo -W 3 -diagnostics:column -D_GUARDOVERFLOW_CRT_ALLOCATORS=1 -Ot -DCODE_ANALYSIS -DWIN32 -D_DEBUG -D_WINDOWS -D_CRT_SECURE_NO_WARNINGS -D_MBCS -EHs -D_CPPUNWIND -EHc -D__MSVC_RUNTIME_CHECKS -RTCs -RTCu -MTd -clrNoPureCRT -D_DEBUG -D_MT -GS -D_M_FP_PRECISE -Zc:wchar_t -Zc:forScope -FoDebug\\boss.obj -FdDebug\\vc142.pdb -external:W 3 -Gd -analyze:projectdirectory C:\\Users\\student\\Desktop\\CS2\\ColorconeSurvivors2\\02_ColorconeSurvivors2 -analyze:rulesetdirectory ;C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Team Tools\\Static Analysis Tools\\\\Rule Sets; -analyze:ruleset C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\Team Tools\\Static Analysis Tools\\Rule Sets\\NativeRecommendedRules.ruleset -analyze:quiet -analyze:plugin C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\bin\\HostX86\\x86\\EspXEngine.dll -FC -errorreport:prompt -I C:\\Program Files (x86)\\Microsoft DirectX SDK (June 2010)\\Include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\UnitTest\\include -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.7.1\\Include\\um -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Tools\\MSVC\\14.29.30133\\atlmfc\\include -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\ucrt -external:I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\UnitTest\\include -I C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\VS\\UnitTest\\include -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\um -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\shared -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\winrt -external:I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -I C:\\Program Files (x86)\\Windows Kits\\10\\Include\\10.0.19041.0\\cppwinrt -external:I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.7.1\\Include\\um -I C:\\Program Files (x86)\\Windows Kits\\NETFXSDK\\4.7.1\\Include\\um",
+          "executionSuccessful": true
+        }
+      ],
+      "artifacts": [
+        {
+          "location": {
+            "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "deec5e74fb66ffca6cb49f5e225983bb"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/d3dx9math.inl"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "ca4ba28fa34ec97fd50fc5b184687363"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/dinput.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "0dc2c3292f622f1ff6952a163ed336cc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Program Files (x86)/Microsoft DirectX SDK (June 2010)/Include/xaudio2.h"
+          },
+          "roles": [
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "4deebda0b9b93a82c3261ddcb05ca3d0"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/objectbillboard.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "1fab1699afc680d08ed6927fcadcfc72"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/objectbillboard.h"
+          },
+          "hashes": {
+            "md5": "80791f21947dd172cc4b904f0b74685f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/main.h"
+          },
+          "hashes": {
+            "md5": "20715a64b231980758023787de208f64"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/rpcsal.h"
+          },
+          "hashes": {
+            "md5": "fec1415e1273d783e79090571a83934e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9.h"
+          },
+          "hashes": {
+            "md5": "d296189c1d761aa0e1c2daf3b8b592b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3d9.h"
+          },
+          "hashes": {
+            "md5": "05da735f3db2fe7524da8988539ced99"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3d9types.h"
+          },
+          "hashes": {
+            "md5": "8e48f8449e75f4f6035595516c31ec58"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3d9caps.h"
+          },
+          "hashes": {
+            "md5": "2cf8710501d6c3aed8ebf7042df8bb21"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9core.h"
+          },
+          "hashes": {
+            "md5": "39a4bd98e0e9d22ba9d51dac286662b9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9xof.h"
+          },
+          "hashes": {
+            "md5": "b338de250ff8747b0fac4a0f567a7d3c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9mesh.h"
+          },
+          "hashes": {
+            "md5": "2de6f4320e7eb78f536e29bf27bc3445"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9shader.h"
+          },
+          "hashes": {
+            "md5": "fc510418305749392ea05d614300b074"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9effect.h"
+          },
+          "hashes": {
+            "md5": "d23677a843bbc1588ee1da62b56a5ccc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9tex.h"
+          },
+          "hashes": {
+            "md5": "cbf7dc6a3522b1509ade6278f8ff00c5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9shape.h"
+          },
+          "hashes": {
+            "md5": "de5f515b74b8472c5283d840c8327143"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/d3dx9anim.h"
+          },
+          "hashes": {
+            "md5": "3c2501eaff09346d6c30086d8eb2c6c9"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/comdecl.h"
+          },
+          "hashes": {
+            "md5": "271986a1edef3caf60e11421084ad7e4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/audiodefs.h"
+          },
+          "hashes": {
+            "md5": "b1193233b8a749ef595068db46c36597"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/xma2defs.h"
+          },
+          "hashes": {
+            "md5": "ac52f34c6881192422740d08358ca636"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/object.h"
+          },
+          "hashes": {
+            "md5": "fca201d49b7238e87f5acf182456f072"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/renderer.h"
+          },
+          "hashes": {
+            "md5": "5672fb879e3c1fd96382df645fbc42a7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/manager.h"
+          },
+          "hashes": {
+            "md5": "68f39afbb2005489242e93bc0698a596"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/object3d.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "3eedb1e82fd7eceefc563c94fcee26dc"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/object3d.h"
+          },
+          "hashes": {
+            "md5": "7a94ddba1aa1db8fccb4866671ba6e4c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/object2d.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "c40a575e04a160f06109c0eb72eb5493"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/object2d.h"
+          },
+          "hashes": {
+            "md5": "734839b0a11f1726e43c4879f45c2a04"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/object.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "e6afd748aae42ee1e0d2d984c6310828"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/camera.h"
+          },
+          "hashes": {
+            "md5": "29b66b6e23814d5116424b4d5e1551d3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/number.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "8714463bc81a8c515b1bc765746d6554"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/number.h"
+          },
+          "hashes": {
+            "md5": "9f07bccb3675d22814e684958df90ad4"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/modeimage.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "176d20116f3cbbf34c0df4c21314408f"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/modeimage.h"
+          },
+          "hashes": {
+            "md5": "91b582e747166c850835610a50efb2d5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/input.h"
+          },
+          "hashes": {
+            "md5": "294eaff61a4b8dceb6dee8fc7a6dbc70"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/program files (x86)/microsoft directx sdk (june 2010)/include/xinput.h"
+          },
+          "hashes": {
+            "md5": "5eec771aadf59d7166e9795821eaab10"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/sound.h"
+          },
+          "hashes": {
+            "md5": "df5afd261b4aa1def41ee05dcf35731b"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/manager.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "73f4fc346b526b79f860576c0dec86ef"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/debugproc.h"
+          },
+          "hashes": {
+            "md5": "3f60f7ab6991e001f1451fcbace9af56"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/title.h"
+          },
+          "hashes": {
+            "md5": "fe1a5e0c1b51c0bd404bdb730b93603e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/game.h"
+          },
+          "hashes": {
+            "md5": "c92f99f12258641d38f1ea7e852dd0d6"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/result.h"
+          },
+          "hashes": {
+            "md5": "c8b112e4e258e12f6517d49e7ca88351"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/tutorial.h"
+          },
+          "hashes": {
+            "md5": "cd7da5827876985140878d4d4f3843a5"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/ranking.h"
+          },
+          "hashes": {
+            "md5": "00cfa961c3238265d53853cda27c8ce1"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/building.h"
+          },
+          "hashes": {
+            "md5": "1936470b32db404599ef703442bfcf55"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/objectx.h"
+          },
+          "hashes": {
+            "md5": "82eb5411503b15e2b2015d8d7f394782"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/main.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "7a8882df39245f1731c1e5b704670228"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/light.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "e367f7693950e3df25c0e274f87b0709"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/light.h"
+          },
+          "hashes": {
+            "md5": "c640a227479244a0ef9ad46b9b8349e2"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/input.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "01eb59c6f10a3ed0bb7cb9f1d9f57c8e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/hitpoint.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/game.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "a5b71453acad83ace14da52ddb836f30"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/score.h"
+          },
+          "hashes": {
+            "md5": "a659430290896d9eedad8598139ef55a"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/playerx.h"
+          },
+          "hashes": {
+            "md5": "bcb87e4ebf3829f794668793416b803e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/time.h"
+          },
+          "hashes": {
+            "md5": "fa1d42fbc9267b34a936d9f0cfb04c36"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/boss.h"
+          },
+          "hashes": {
+            "md5": "9f93ebc68a66bf92a527d989fcde64b3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/bullet3d.h"
+          },
+          "hashes": {
+            "md5": "2d0f1e968f67f9d58404b1f593afef5e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/explosion3d.h"
+          },
+          "hashes": {
+            "md5": "d1b6587e7482914a3e94bfc8562de41d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/spawner.h"
+          },
+          "hashes": {
+            "md5": "b2a4cd4ede3b0a1e6d551848938e904e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/skybox.h"
+          },
+          "hashes": {
+            "md5": "dde8cfb50d097a2b1e0b235a695f11bd"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/effect.h"
+          },
+          "hashes": {
+            "md5": "b7ec372f6eb033627506baffdf3d992e"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/fade.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "17853b7973bb0ccaf18b85e1be17d0ec"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/explosion3d.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "35ebe6e5cb01f7c5d22a49ba245408f7"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/EnemyX.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "03a6b2889ded104fe3e2721891c3b81d"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/enemyx.h"
+          },
+          "hashes": {
+            "md5": "78b3d485ea7690c2ff81017aba3608e3"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/particle.h"
+          },
+          "hashes": {
+            "md5": "677d19907e2362d5c8a45c2ee1e7c58c"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/effect.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "236a685886c9065d02ee69751134ae69"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/debugproc.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "dc98507b9a65dee1453a47f38fcf6405"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/camera.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "bb9a217c9c66afbd9d076cd7b46d5451"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///C:/Users/student/Desktop/CS2/ColorconeSurvivors2/02_ColorconeSurvivors2/bullet3D.cpp"
+          },
+          "roles": [
+            "analysisTarget",
+            "resultFile"
+          ],
+          "hashes": {
+            "md5": "633a894c269772f2d15bc648bff14f12"
+          }
+        },
+        {
+          "location": {
+            "uri": "file:///c:/users/student/desktop/cs2/colorconesurvivors2/02_colorconesurvivors2/boss.cpp"
+          },
+          "roles": [
+            "analysisTarget"
+          ],
+          "hashes": {
+            "md5": "23a247b3b748860b926b639bfbabcec8"
+          }
+        }
+      ]
+    }
+  ]
+}

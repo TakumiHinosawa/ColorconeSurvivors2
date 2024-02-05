@@ -53,6 +53,7 @@ public:
 	void SetAnim(int nCntAnim);
 
 private:
+
 	LPDIRECT3DTEXTURE9 m_pTexture;	//テクスチャ情報
 	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff;		//バッファ情報
 	D3DXMATRIX m_mtxWorld;		//ワールドマトリックス

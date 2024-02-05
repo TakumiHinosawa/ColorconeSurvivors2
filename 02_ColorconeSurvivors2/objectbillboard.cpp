@@ -129,7 +129,7 @@ void CObjectBillboard::Uninit(void)
 //=========================================================================================
 void CObjectBillboard::Update(void)
 {
-
+	SetVtx();
 }
 
 //=========================================================================================
@@ -157,11 +157,6 @@ void CObjectBillboard::Draw(void)
 	//Zテストを無効にする
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_ALWAYS);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
-
-	//aブレンディングを加算合成に設定
-	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
-	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 
 	//ワールドマトリックスの初期化
 	D3DXMatrixIdentity(&m_mtxWorld);
@@ -206,11 +201,6 @@ void CObjectBillboard::Draw(void)
 	//Zテストを有効にする
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-
-	//aブレンディングを元に戻す
-	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
-	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 }
 
 //=========================================================================================
@@ -362,6 +352,24 @@ void CObjectBillboard::SetVtx(void)
 	pVtx[1].pos.z = (0.0f);
 	pVtx[2].pos.z = (0.0f);
 	pVtx[3].pos.z = (0.0f);
+
+	//法線ベクトルの設定
+	pVtx[0].nor = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+	pVtx[1].nor = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+	pVtx[2].nor = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+	pVtx[3].nor = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+
+	//頂点カラーの設定
+	pVtx[0].col = D3DXCOLOR(m_col.r, m_col.g, m_col.b, m_col.a);
+	pVtx[1].col = D3DXCOLOR(m_col.r, m_col.g, m_col.b, m_col.a);
+	pVtx[2].col = D3DXCOLOR(m_col.r, m_col.g, m_col.b, m_col.a);
+	pVtx[3].col = D3DXCOLOR(m_col.r, m_col.g, m_col.b, m_col.a);
+
+	//テクスチャ座標の設定
+	pVtx[0].tex = D3DXVECTOR2(0.0f, 0.0f);
+	pVtx[1].tex = D3DXVECTOR2(1.0f, 0.0f);
+	pVtx[2].tex = D3DXVECTOR2(0.0f, 1.0f);
+	pVtx[3].tex = D3DXVECTOR2(1.0f, 1.0f);
 
 	//頂点バッファをアンロックする
 	m_pVtxBuff->Unlock();

@@ -215,12 +215,6 @@ void CObject3D::Set(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float fHeight, float fWidt
 //=========================================================================================
 void CObject3D::SetWall(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float fHeight, float fWidth, int nType)
 {
-	//オブジェクト取得
-	CRenderer *pRenderer = CManager::GetManager()->GetRenderer();
-
-	//デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = pRenderer->GetDevice();
-
 	VERTEX_3D *pVtx;
 
 	//頂点バッファをロックし、頂点データへのポインタを取得

@@ -1,0 +1,2 @@
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\2023_ActionGame_000.exe.lastcodeanalysissucceeded
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\Release\NativeCodeAnalysis.read.1.tlog

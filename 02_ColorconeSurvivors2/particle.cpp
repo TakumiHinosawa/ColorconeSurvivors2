@@ -54,19 +54,21 @@ void CParticle::Uninit(void)
 //=========================================================================================
 void CParticle::Update(void)
 {
-	CEffect* pEffect = CEffect::Create();
+	for (int i = 0; i < 3; i++){
+		CEffect* pEffect = CEffect::Create();
 
-	//Šp“x‚ÌÝ’è
-	float fMove = (float)(rand()) / RAND_MAX * 10.0f + 10.0f;
+		//Šp“x‚ÌÝ’è
+		float fMove = (float)(rand()) / RAND_MAX * 10.0f + 10.0f;
 
-	//ˆÚ“®—Ê‚ÌÝ’è
-	D3DXVECTOR3 move;
-	move.x = sinf((float)(rand() % 629 - 314) / 100.0f) * fMove;
-	move.y = sinf((float)(rand() % 314) / 100.0f) * fMove;
-	move.z = cosf((float)(rand() % 629 - 314) / 100.0f) * fMove;
+		//ˆÚ“®—Ê‚ÌÝ’è
+		D3DXVECTOR3 move;
+		move.x = sinf((float)(rand() % 629 - 314) / 100.0f) * fMove;
+		move.y = sinf((float)(rand() % 314) / 100.0f) * fMove;
+		move.z = cosf((float)(rand() % 629 - 314) / 100.0f) * fMove;
 
-	pEffect->SetMove(move);
-	pEffect->SetPos(m_pos);
+		pEffect->SetMove(move);
+		pEffect->SetPos(m_pos);
+	}
 
 	m_nLife--;
 

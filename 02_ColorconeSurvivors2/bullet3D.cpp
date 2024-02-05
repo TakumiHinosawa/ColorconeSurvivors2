@@ -109,7 +109,7 @@ void CBullet3D::Uninit(void)
 void CBullet3D::Update(void)
 {
 	//サウンドの取得
-	CSound* pSound = CManager::GetManager()->GetSound();
+	//CSound* pSound = CManager::GetManager()->GetSound();
 
 	//寿命を減らす
 	m_nLife--;
@@ -225,7 +225,7 @@ bool CBullet3D::CollisionEnemy(void)
 	vtxMax = GetVtxMax();
 
 	//サウンド情報取得
-	CSound *pSound = CManager::GetManager()->GetSound();
+	//CSound *pSound = CManager::GetManager()->GetSound();
 
 	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
 	{
@@ -296,7 +296,7 @@ bool CBullet3D::CollisionBoss(void)
 	vtxMax = GetVtxMax();
 
 	//サウンド情報取得
-	CSound* pSound = CManager::GetManager()->GetSound();
+	//CSound* pSound = CManager::GetManager()->GetSound();
 
 	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
 	{
@@ -367,7 +367,7 @@ bool CBullet3D::CollisionSpawner(void)
 	vtxMax = GetVtxMax();
 
 	//サウンド情報取得
-	CSound* pSound = CManager::GetManager()->GetSound();
+	//CSound* pSound = CManager::GetManager()->GetSound();
 
 	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
 	{

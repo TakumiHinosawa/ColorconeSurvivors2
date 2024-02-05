@@ -108,7 +108,7 @@ void CEffect::Update(void)
 	//カラーの取得
 	D3DXCOLOR col = GetCol();
 	col = D3DXCOLOR(1.0f,0.0f,0.0f,1.0f);
-	col.a -= 0.012f;
+	col.a -= 0.006f;
 
 	//移動量の取得
 	D3DXVECTOR3 move = GetMove();
@@ -147,7 +147,23 @@ void CEffect::Update(void)
 //=========================================================================================
 void CEffect::Draw(void)
 {
+	//オブジェクト取得
+	CRenderer* pRenderer = CManager::GetManager()->GetRenderer();
+
+	//デバイス取得
+	LPDIRECT3DDEVICE9 pDevice = pRenderer->GetDevice();
+
+	//aブレンディングを加算合成に設定
+	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+
 	CObjectBillboard::Draw();
+
+	//aブレンディングを元に戻す
+	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 }
 
 //=========================================================================================

@@ -110,8 +110,8 @@ void CDebugProc::Draw(void)
 void CDebugProc::Print(const char *fmt, ...)
 {
 	va_list args;
-	char aString[MAX_DEBUGSTRING];		// 指定文字格納用
-	char aSaveString[MAX_DEBUGSTRING];	// 可変引数中身格納用
+	char aString[MAX_DEBUGSTRING] = {};		// 指定文字格納用
+	char aSaveString[MAX_DEBUGSTRING] = {};	// 可変引数中身格納用
 	int nLength = 0;	// 可変引数内の文字の長さ
 	int nStopLength;	// 可変引数挿入場所より
 

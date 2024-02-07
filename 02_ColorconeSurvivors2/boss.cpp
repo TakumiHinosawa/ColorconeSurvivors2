@@ -16,21 +16,13 @@
 #include "spawner.h"
 
 //=========================================================================================
-//マクロ定義
-//=========================================================================================
-
-//*****************************************************************************************
-//静的メンバ変数
-//*****************************************************************************************
-
-//=========================================================================================
 //ボスのコンストラクタ	
 //=========================================================================================
 CBoss::CBoss()
 {
 	m_nLife = 100;
-	m_nCtr = 0;
 	m_nSpawnCtr = 0;
+	m_pos = {};
 }
 
 //=========================================================================================
@@ -80,15 +72,31 @@ void CBoss::Update(void)
 	//ボスの座標取得
 	D3DXVECTOR3 BossPos = CObjectX::GetPosition();
 	BossPos = D3DXVECTOR3(0.0f,-200.0f,300.0f);
+	m_pos = BossPos;
 
-	//位置更新
-	SetPosition(BossPos);
+	D3DXVECTOR3 BossMove = CObjectX::GetMove();
+	BossMove = D3DXVECTOR3(0.0f, 0.0f, 300.0f);
 
 	float fRandX, fRandZ;
 	fRandX = (float)(rand() % 801) - 400.0f;
 	fRandZ = (float)(rand() % 801) - 400.0f;
 
-	if (m_nCtr >= 300 && m_nSpawnCtr < NUM_SPAWNER)
+	// ランダムな位置に移動する
+	float randomX = static_cast<float>(rand() % 801) - 400.0f;
+	float randomZ = static_cast<float>(rand() % 801) - 400.0f;
+
+	D3DXVECTOR3 targetPosition(randomX, 0.0f, randomZ);
+
+	//移動させる
+	MoveToPosition(targetPosition);
+
+	//移動設定
+	SetMove(m_pos);
+
+	//位置更新
+	SetPosition(BossPos);
+
+	if (m_nCtr >= 380 && m_nSpawnCtr < NUM_SPAWNER)
 	{
 		CSpawner* pSpawner = CSpawner::Create(D3DXVECTOR3(fRandX,-190.0f, fRandZ));
 
@@ -99,6 +107,19 @@ void CBoss::Update(void)
 	//デバッグ表示
 	pDebug->Print("[ボス] ( X:%f Y:%f Z:%f )\n\n", pos.x, pos.y, pos.z);
 	pDebug->Print("[ボス 体力] ( %d )\n\n",m_nLife);
+}
+
+//=========================================================================================
+//ボスの移動
+//=========================================================================================
+void CBoss::MoveToPosition(const D3DXVECTOR3& targetPosition)
+{
+	// ゆっくりと移動する処理
+	float distance = D3DXVec3Length(&(targetPosition - m_pos));
+	float t = distance / 2.0f;
+
+	// 移動先までの位置をゆっくりと更新
+	m_pos += (targetPosition - m_pos) / t;
 }
 
 //=========================================================================================

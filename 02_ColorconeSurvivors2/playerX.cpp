@@ -28,7 +28,7 @@
 #define TIMING	 (6)			//弾発射の速度
 #define BULLETSPEED	(5.0f)		//弾速
 #define HEIGHT		(10.0f)		//高さ
-#define KNOCKBACK	(10.0f)
+#define KNOCKBACK	(17.0f)
 
 //=========================================================================================
 //プレイヤーのコンストラクタ	
@@ -39,6 +39,7 @@ CPlayerX::CPlayerX()
 	m_VtxMin = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_BuildingPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_OldPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	m_nCtr = 0;
 }
 
 //=========================================================================================
@@ -81,7 +82,7 @@ void CPlayerX::Uninit(void)
 void CPlayerX::Update(void)
 {
 	//プレイヤー操作処理
-	Controller(); 
+	Controller();
 }
 
 //=========================================================================================
@@ -185,10 +186,12 @@ void CPlayerX::Controller(void)
 	//　射撃
 	//*********************************************************************
 	if (pInputKeyboard->GetPress(DIK_LEFT) == true && m_nTiming >= TIMING
-		|| pInputController->GetJoyStickRX(0) < 0 && m_nTiming >= TIMING)
+		|| pInputController->GetJoyStickRX(0) < 0 && m_nTiming >= TIMING
+		|| pInputController->GetPress(pInputController->BUTTON_X,0) && m_nTiming >= TIMING)
 	{//←が押されたとき
 		if (pInputKeyboard->GetPress(DIK_UP) == true && m_nTiming >= TIMING
-			|| pInputController->GetJoyStickRY(0) > 0 && m_nTiming >= TIMING)
+			|| pInputController->GetJoyStickRY(0) > 0 && m_nTiming >= TIMING
+			|| pInputController->GetPress(pInputController->BUTTON_Y, 0) && m_nTiming >= TIMING)
 		{
 			//弾の生成
 			CBullet3D::Create()->SetBullet(D3DXVECTOR3(pos.x, pos.y + HEIGHT, pos.z),
@@ -202,7 +205,8 @@ void CPlayerX::Controller(void)
 			m_nTiming = 0;
 		}
 		else if (pInputKeyboard->GetPress(DIK_DOWN) == true && m_nTiming >= TIMING
-			|| pInputController->GetJoyStickRY(0) < 0 && m_nTiming >= TIMING)
+			|| pInputController->GetJoyStickRY(0) < 0 && m_nTiming >= TIMING
+			|| pInputController->GetPress(pInputController->BUTTON_A, 0) && m_nTiming >= TIMING)
 		{
 			//弾の生成
 			CBullet3D::Create()->SetBullet(D3DXVECTOR3(pos.x, pos.y + HEIGHT, pos.z),
@@ -231,10 +235,12 @@ void CPlayerX::Controller(void)
 	}
 
 	if (pInputKeyboard->GetPress(DIK_RIGHT) == true && m_nTiming >= TIMING
-		|| pInputController->GetJoyStickRX(0) > 0 && m_nTiming >= TIMING)
+		|| pInputController->GetJoyStickRX(0) > 0 && m_nTiming >= TIMING
+		|| pInputController->GetPress(pInputController->BUTTON_B, 0) && m_nTiming >= TIMING)
 	{//→が押されたとき
 		if (pInputKeyboard->GetPress(DIK_UP) == true && m_nTiming >= TIMING
-			|| pInputController->GetJoyStickRY(0) > 0 && m_nTiming >= TIMING)
+			|| pInputController->GetJoyStickRY(0) > 0 && m_nTiming >= TIMING
+			|| pInputController->GetPress(pInputController->BUTTON_Y, 0) && m_nTiming >= TIMING)
 		{
 			//弾の生成
 			CBullet3D::Create()->SetBullet(D3DXVECTOR3(pos.x, pos.y + HEIGHT, pos.z),
@@ -248,7 +254,8 @@ void CPlayerX::Controller(void)
 			m_nTiming = 0;
 		}
 		else if (pInputKeyboard->GetPress(DIK_DOWN) == true && m_nTiming >= TIMING
-			|| pInputController->GetJoyStickRY(0) < 0 && m_nTiming >= TIMING)
+			|| pInputController->GetJoyStickRY(0) < 0 && m_nTiming >= TIMING
+			|| pInputController->GetPress(pInputController->BUTTON_A, 0) && m_nTiming >= TIMING)
 		{
 			//弾の生成
 			CBullet3D::Create()->SetBullet(D3DXVECTOR3(pos.x, pos.y + HEIGHT, pos.z),
@@ -276,7 +283,8 @@ void CPlayerX::Controller(void)
 		}
 	}
 	if (pInputKeyboard->GetPress(DIK_UP) == true && m_nTiming >= TIMING
-		|| pInputController->GetJoyStickRY(0) > 0 && m_nTiming >= TIMING)
+		|| pInputController->GetJoyStickRY(0) > 0 && m_nTiming >= TIMING
+		|| pInputController->GetPress(pInputController->BUTTON_Y, 0) && m_nTiming >= TIMING)
 	{
 		//弾の生成
 		CBullet3D::Create()->SetBullet(D3DXVECTOR3(pos.x, pos.y + HEIGHT, pos.z),
@@ -289,7 +297,8 @@ void CPlayerX::Controller(void)
 		m_nTiming = 0;
 	}
 	if (pInputKeyboard->GetPress(DIK_DOWN) == true && m_nTiming >= TIMING
-		|| pInputController->GetJoyStickRY(0) < 0 && m_nTiming >= TIMING)
+		|| pInputController->GetJoyStickRY(0) < 0 && m_nTiming >= TIMING
+		|| pInputController->GetPress(pInputController->BUTTON_A, 0) && m_nTiming >= TIMING)
 	{
 		//弾の生成
 		CBullet3D::Create()->SetBullet(D3DXVECTOR3(pos.x, pos.y + HEIGHT, pos.z),
@@ -354,6 +363,18 @@ void CPlayerX::Controller(void)
 
 	//建物との当たり判定処理
 	CollisionBuilding();
+
+	if (m_nCtr > 0)
+	{
+		//振動
+		pInputController->GetVibration(65535, 0);
+		m_nCtr--;
+	}
+	else
+	{
+		//振動停止
+		pInputController->StopVibration();
+	}
 
 	//デバッグ表示
 	pDebug->Print("\n重力 : %f\n",move.y);
@@ -492,8 +513,6 @@ void CPlayerX::CollisionBuilding(void)
 
 						//重力初期化
 						PlayerMove.y = 0.0f;
-
-						pDebug->Print("\n乗っている判定 \n\n");
 					}
 				}
 				//現在のサイズの座標を保存する
@@ -512,15 +531,9 @@ void CPlayerX::CollisionBuilding(void)
 	//移動情報更新
 	SetMove(PlayerMove);
 
+	//当たり判定
 	CollideBoss();
 	CollideEnemy();
-
-	//デバッグ表示
-	pDebug->Print("[建物　座標] ( X:%f Y:%f Z:%f )\n", m_BuildingPos.x, m_BuildingPos.y, m_BuildingPos.z);
-	pDebug->Print("[建物　最大サイズ] ( X:%f Y:%f Z:%f )\n", m_VtxMax.x, m_VtxMax.y, m_VtxMax.z);
-	pDebug->Print("[建物　最小サイズ] ( X:%f Y:%f Z:%f )\n\n", m_VtxMin.x, m_VtxMin.y, m_VtxMin.z);
-	pDebug->Print("[プレイヤー　座標] ( X:%f Y:%f Z:%f )\n", PlayerPos.x, PlayerPos.y, PlayerPos.z);
-	pDebug->Print("[プレイヤー 現在の座標] ( X:%f Y:%f Z:%f )\n\n", m_OldPos.x, m_OldPos.y, m_OldPos.z);
 }
 
 //=========================================================================================
@@ -631,21 +644,23 @@ void CPlayerX::CollideEnemy(void)
 
 					//ノックバック
 					Knockback(KNOCKBACK, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
-					
+
+					m_nCtr = 10;
+
 					//爆発の生成
-					CExplosion3D::Create(EnemyPos);
+					//CExplosion3D::Create(EnemyPos);
 
 					//サウンドの再生
 					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
 
 					//敵に自分が当たった時
-					pObj->Uninit();
+					//pObj->Uninit();
 
 					//スコアの情報取得
-					CScore* pScore = CGame::GetScore();
+					//CScore* pScore = CGame::GetScore();
 
 					//スコアの加算
-					pScore->SubScore(100);
+					//pScore->SubScore(100);
 				}
 			}
 		}

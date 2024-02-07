@@ -74,17 +74,16 @@ void CEffect::Unload(void)
 	}
 }
 
-
 //=========================================================================================
 //エフェクトの初期化処理
 //=========================================================================================
 HRESULT CEffect::Init(void)
 {
-	//ビルボードの初期化
-	CObjectBillboard::Init();
-
 	//種類の設定
 	SetType(TYPE_EFFECT);
+
+	//ビルボードの初期化
+	CObjectBillboard::Init();
 
 	m_nLife = LIFE;
 
@@ -108,7 +107,6 @@ void CEffect::Update(void)
 	//カラーの取得
 	D3DXCOLOR col = GetCol();
 	col = D3DXCOLOR(1.0f,0.0f,0.0f,1.0f);
-	col.a -= 0.006f;
 
 	//移動量の取得
 	D3DXVECTOR3 move = GetMove();
@@ -136,10 +134,10 @@ void CEffect::Update(void)
 	}
 
 	//設定処理
-	SetSize(SIZE,SIZE);
 	SetCol(col);
 	SetMove(move);
 	SetPos(pos);
+	SetSize(SIZE,SIZE);
 }
 
 //=========================================================================================

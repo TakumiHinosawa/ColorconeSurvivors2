@@ -100,6 +100,8 @@ public:
 	bool GetRelease(JOYKEY nkey, int nPlayer);
 	bool GetRepeat(JOYKEY nKey, int nPlayer);
 	void GetVibration(int nValue,int nPlayer);
+	void StopVibration(void);
+
 	SHORT GetJoyStickLX(int nPlayer);
 	SHORT GetJoyStickLY(int nPlayer);
 	SHORT GetJoyStickRX(int nPlayer);

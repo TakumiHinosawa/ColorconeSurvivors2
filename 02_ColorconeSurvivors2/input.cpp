@@ -343,3 +343,13 @@ void CInputController::GetVibration(int nValue, int nPlayer)
 
 	DWORD result = XInputSetState(controllerIndex, m_aGamePadVibration);
 }
+
+void CInputController::StopVibration(void)
+{
+	ZeroMemory(&m_aGamePadVibration[0], sizeof(XINPUT_VIBRATION));
+
+	m_aGamePadVibration[0].wLeftMotorSpeed = 0;
+	m_aGamePadVibration[0].wRightMotorSpeed = 0;
+
+	XInputSetState(0, &m_aGamePadVibration[0]);
+}

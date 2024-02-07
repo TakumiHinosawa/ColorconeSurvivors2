@@ -142,7 +142,7 @@ void CEnemyX::Update(void)
 	//ˆÚ“®—Ê‰ÁŽZ
 	EnemyPos += EnemyMove;
 
-	if (EnemyPos.y <= -600.0f)
+	if (EnemyPos.y <= -800.0f)
 	{
 		Uninit();
 		return;

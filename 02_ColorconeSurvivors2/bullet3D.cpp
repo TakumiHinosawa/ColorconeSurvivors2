@@ -34,7 +34,7 @@ LPDIRECT3DTEXTURE9 CBullet3D::m_pTexture = NULL;
 CBullet3D::CBullet3D()
 {//各種初期化
 
-	m_nLife = 50;
+	m_nLife = 0;
 }
 
 //=========================================================================================
@@ -82,6 +82,8 @@ void CBullet3D::Unload(void)
 //=========================================================================================
 HRESULT CBullet3D::Init(void)
 {
+	m_nLife = 50;
+
 	//オブジェクトの初期化処理
 	CObjectBillboard::Init();
 

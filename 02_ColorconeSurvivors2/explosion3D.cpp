@@ -21,7 +21,7 @@
 //*****************************************************************************************
 //静的メンバ変数初期化
 //*****************************************************************************************
-LPDIRECT3DTEXTURE9 CExplosion3D::m_pTexture = NULL;
+LPDIRECT3DTEXTURE9 CExplosion3D::m_pTexture = nullptr;
 
 //=========================================================================================
 //爆発のコンストラクタ
@@ -78,11 +78,11 @@ void CExplosion3D::Unload(void)
 //=========================================================================================
 HRESULT CExplosion3D::Init(void)
 {
-	//オブジェクトの初期化処理
-	CObjectBillboard::Init();
-
 	//種類の設定
 	SetType(TYPE_EXPLOSION);
+
+	//オブジェクトの初期化処理
+	CObjectBillboard::Init();
 
 	//アニメーション設定処理
 	CObjectBillboard::SetAnim(m_nPatternAnim);
@@ -123,9 +123,6 @@ void CExplosion3D::Update(void)
 
 		//処理を終える
 		return;
-
-		//カウンターを初期値に戻す
-		m_nCounterAnim = 0;
 	}
 
 	//アニメーション設定処理
@@ -178,13 +175,14 @@ CExplosion3D *CExplosion3D::Create(D3DXVECTOR3 pos)
 
 		//テクスチャの割り当て
 		pExplosion->BindTexture(m_pTexture);
+
+		//位置設定処理
+		pExplosion->SetPos(pos);
+
+		//サイズ設定処理
+		pExplosion->SetSize(SIZE, SIZE);
+		pExplosion->SetAnim(pExplosion->m_nPatternAnim);
 	}
-
-	//位置設定処理
-	pExplosion->SetPos(pos);
-
-	//サイズ設定処理
-	pExplosion->SetSize(SIZE, SIZE);
 
 	//オブジェクト情報を返す
 	return pExplosion;

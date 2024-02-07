@@ -30,12 +30,14 @@ public:
 	static CBoss* Create(void);
 
 private:
-
 	static const int NUM_SPAWNER = 5;
+
+	void MoveToPosition(const D3DXVECTOR3& targetPosition);
 
 	int m_nLife;
 	int m_nCtr;
 	int m_nSpawnCtr;
+	D3DXVECTOR3 m_pos;
 };
 
 #endif

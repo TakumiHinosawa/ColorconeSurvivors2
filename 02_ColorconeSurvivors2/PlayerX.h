@@ -40,6 +40,7 @@ private:
 	D3DXVECTOR3 m_VtxMin;
 	D3DXVECTOR3 m_BuildingPos;
 	int m_nTiming;
+	int m_nCtr;
 };
 
 #endif

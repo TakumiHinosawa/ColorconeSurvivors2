@@ -10,6 +10,8 @@
 //*****************************************************************************************
 #include "number.h"
 #include "score.h"
+#include "blowngage.h"
+#include "blown.h"
 #include "light.h"
 #include "camera.h"
 #include "playerx.h"
@@ -26,7 +28,11 @@
 #include "spawner.h"
 #include "skybox.h"
 #include "effect.h"
+#include "point.h"
+#include "hitpoint.h"
+#include "hpbg.h"
 #include <stdio.h>
+#include "fade.h"
 
 //*****************************************************************************************
 //静的メンバ変数
@@ -34,11 +40,14 @@
 CPlayerX *CGame::m_pPlayerX = nullptr;
 CBoss* CGame::m_pBoss = nullptr;
 CScore *CGame::m_pScore = nullptr;
+CBlown* CGame::m_pBlown = nullptr;
 CCamera *CGame::m_pCamera = nullptr;
 CLight *CGame::m_pLight = nullptr;
 CObjectX *CGame::m_pObjectX = nullptr;
 CBuilding *CGame::m_apBuilding[NUM_BUILD] = {};
 CSkybox* CGame::m_pSkybox = nullptr;
+CHitpoint* CGame::m_pHitpoint = nullptr;
+CHpbg* CGame::m_pHpbg = nullptr;
 
 //=========================================================================================
 //ゲームのコンストラクタ
@@ -100,10 +109,14 @@ HRESULT CGame::Init(void)
 	//********************************************************
 	//テクスチャ読み込み
 	//********************************************************
+	CHitpoint::Load();
 	CNumber::Load();
+	CBlowngage::Load();
 	CBullet3D::Load();
+	CPoint::Load();
 	CExplosion3D::Load();
 	CEffect::Load();
+	CHpbg::Load();
 
 	//********************************************************
 	//プレイヤー
@@ -167,6 +180,26 @@ HRESULT CGame::Init(void)
 	}
 
 	//********************************************************
+	//ヒットポイント
+	//********************************************************
+	if (m_pHpbg == nullptr)
+	{//使用されていないとき
+
+		//スコアオブジェクトの情報を取得
+		m_pHpbg = CHpbg::Create();
+	}
+
+	//********************************************************
+	//ヒットポイント
+	//********************************************************
+	if (m_pHitpoint == nullptr)
+	{//使用されていないとき
+
+		//スコアオブジェクトの情報を取得
+		m_pHitpoint = CHitpoint::Create();
+	}
+
+	//********************************************************
 	//スコア
 	//********************************************************
 	if (m_pScore == nullptr)
@@ -178,6 +211,20 @@ HRESULT CGame::Init(void)
 		//オブジェクト設定
 		m_pScore->SetScore();
 	}
+
+	//********************************************************
+	//吹っ飛び
+	//********************************************************
+	if (m_pBlown == nullptr)
+	{//使用されていないとき
+
+		//スコアオブジェクトの情報を取得
+		m_pBlown = CBlown::Create();
+
+		//オブジェクト設定
+		m_pBlown->Set();
+	}
+
 
 	//********************************************************
 	//サウンド
@@ -209,6 +256,22 @@ void CGame::Uninit(void)
 
 		//初期化
 		m_pScore = nullptr;
+	}
+
+	//********************************************************
+	//吹っ飛び
+	//********************************************************
+	if (m_pBlown != nullptr)
+	{//使用されていたら
+
+		//吹っ飛びの終了処理
+		m_pBlown->Uninit();
+
+		//破棄
+		delete m_pBlown;
+
+		//初期化
+		m_pBlown = nullptr;
 	}
 
 	//********************************************************
@@ -272,6 +335,26 @@ void CGame::Uninit(void)
 	}
 
 	//********************************************************
+	//ヒットポイント
+	//********************************************************
+	if (m_pHitpoint != nullptr)
+	{//使用されているとき
+
+		//初期化
+		m_pHitpoint = nullptr;
+	}
+
+	//********************************************************
+	//ヒットポイント
+	//********************************************************
+	if (m_pHpbg != nullptr)
+	{//使用されているとき
+
+		//初期化
+		m_pHpbg = nullptr;
+	}
+
+	//********************************************************
 	//建物
 	//********************************************************
 	for (int nCnt = 0; nCnt < NUM_BUILD; nCnt++)
@@ -285,10 +368,14 @@ void CGame::Uninit(void)
 	}
 
 	//各種テクスチャ破棄
+	CHitpoint::Unload();
 	CNumber::Unload();
 	CBullet3D::Unload();
 	CExplosion3D::Unload();
 	CEffect::Unload();
+	CPoint::Unload();
+	CHpbg::Unload();
+	CBlowngage::Unload();
 }
 
 //=============================================================================
@@ -304,9 +391,16 @@ void CGame::Update(void)
 
 		//更新処理
 		m_pScore->Update();
+	}
 
-		//スコアの更新
-		m_pScore->AddScore(1);
+	//********************************************************
+	//吹っ飛び
+	//********************************************************
+	if (m_pBlown != nullptr)
+	{//使用されていたら
+
+		//更新処理
+		m_pBlown->Update();
 	}
 
 	//********************************************************
@@ -336,10 +430,7 @@ void CGame::Update(void)
 		}
 
 		//画面遷移
-		CManager::GetManager()->SetMode(CScene::MODE_RANKING);
-
-		//サウンドの再生
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_TRANSITION);
+		CFade::GetInstance()->SetFade(CScene::MODE_RANKING);
 	}
 }
 
@@ -440,3 +531,28 @@ CSkybox* CGame::GetSkybox(void)
 {
 	return m_pSkybox;
 }
+
+//=========================================================================================
+//ヒットポイント情報取得
+//=========================================================================================
+CHitpoint* CGame::GetHitpoint(void)
+{
+	return m_pHitpoint;
+}
+
+//=========================================================================================
+//ヒットポイント情報取得
+//=========================================================================================
+CHpbg* CGame::GetHpbg(void)
+{
+	return m_pHpbg;
+}
+
+//=========================================================================================
+//ぶっ飛び情報取得
+//=========================================================================================
+CBlown* CGame::GetBlown(void)
+{
+	return m_pBlown;
+}
+

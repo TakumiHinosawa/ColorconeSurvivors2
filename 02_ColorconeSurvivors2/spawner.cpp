@@ -15,6 +15,8 @@
 #include "game.h"
 #include "enemyX.h"
 #include "effect.h"
+#include "particle.h"
+#include "boss.h"
 
 //=========================================================================================
 //マクロ定義
@@ -27,7 +29,7 @@
 CSpawner::CSpawner()
 {
 	m_nSpwanCtr = 0;
-	m_nLife = 10;
+	m_nLife = 30;
 }
 
 //=========================================================================================
@@ -128,16 +130,21 @@ void CSpawner::Hit(void)
 {
 	m_nLife--;
 
+	CParticle::Create(GetPosition(), 0);
+
 	//スコアの情報取得
 	CScore* pScore = CGame::GetScore();
-
-	//スコアの加算
-	pScore->AddScore(100);
 
 	if (m_nLife <= 0)
 	{
 		//終了処理
 		CSpawner::Uninit();
+
+		//ボスの体力減算
+		CGame::GetBoss()->SumLife(40);
+
+		//スコアの加算
+		pScore->AddScore(1000);
 	}
 }
 

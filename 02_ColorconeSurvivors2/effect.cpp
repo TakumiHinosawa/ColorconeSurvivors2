@@ -55,7 +55,7 @@ HRESULT CEffect::Load(void)
 
 	//テクスチャの読み込み
 	D3DXCreateTextureFromFile(pDevice,
-		"data\\TEXTURE\\effect000.jpg",
+		"data\\TEXTURE\\000.png",
 		&m_pTexture);
 
 	return S_OK;
@@ -104,9 +104,29 @@ void CEffect::Uninit(void)
 //=========================================================================================
 void CEffect::Update(void)
 {
-	//カラーの取得
-	D3DXCOLOR col = GetCol();
-	col = D3DXCOLOR(1.0f,0.0f,0.0f,1.0f);
+	D3DXCOLOR col;
+
+	//ランダムカラー
+	int nType = rand() % 4;
+
+	switch (nType)
+	{
+	case 0:
+		col = D3DXCOLOR(1.0f, 0.0f, 0.0f, 0.75f);
+		break;
+
+	case 1:
+		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 0.75f);
+		break;
+
+	case 2:
+		col = D3DXCOLOR(0.0f, 0.0f, 1.0f, 0.75f);
+		break;
+
+	case 3:
+		col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.75f);
+		break;
+	}
 
 	//移動量の取得
 	D3DXVECTOR3 move = GetMove();
@@ -151,17 +171,17 @@ void CEffect::Draw(void)
 	//デバイス取得
 	LPDIRECT3DDEVICE9 pDevice = pRenderer->GetDevice();
 
-	//aブレンディングを加算合成に設定
-	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
-	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
+	////aブレンディングを加算合成に設定
+	//pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+	//pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	//pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_ONE);
 
 	CObjectBillboard::Draw();
 
-	//aブレンディングを元に戻す
-	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
-	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
-	pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
+	////aブレンディングを元に戻す
+	//pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
+	//pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
+	//pDevice->SetRenderState(D3DRS_DESTBLEND, D3DBLEND_INVSRCALPHA);
 }
 
 //=========================================================================================

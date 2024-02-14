@@ -12,6 +12,7 @@
 #include "modeimage.h"
 #include "input.h"
 #include "sound.h"
+#include "fade.h"
 
 //=============================================================================
 //コンストラクタ
@@ -90,8 +91,7 @@ void CTutorial::Update(void)
 	if (pInputKeyboard->GetTrigger(DIK_SPACE) == true)
 	{
 		//画面遷移
-		CManager::GetManager()->SetMode(CScene::MODE_GAME);
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_TRANSITION);
+		CFade::GetInstance()->SetFade(CScene::MODE_GAME);
 	}
 }
 

@@ -16,6 +16,7 @@
 #include "game.h"
 #include "spawner.h"
 #include "particle.h"
+#include "point.h"
 
 //=========================================================================================
 //マクロ定義
@@ -205,6 +206,8 @@ void CEnemyX::Hit(void)
 	pScore->AddScore(100);
 
 	CParticle::Create(GetPosition(), 0);
+
+	CPoint::Create(D3DXVECTOR3(GetPosition().x, GetPosition().y + 50.0f, GetPosition().z));
 
 	//終了処理
 	CEnemyX::Uninit();

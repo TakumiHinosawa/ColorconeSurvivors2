@@ -265,12 +265,6 @@ bool CBullet3D::CollisionEnemy(void)
 					//ヒット処理
 					pObj->Hit();
 
-					//スコアの情報取得
-					CScore *pScore = CGame::GetScore();
-
-					//スコアの加算
-					pScore->AddScore(10);
-
 					//当たった場合はtrueを返す
 					return true;
 				}
@@ -340,7 +334,7 @@ bool CBullet3D::CollisionBoss(void)
 					CScore* pScore = CGame::GetScore();
 
 					//スコアの加算
-					pScore->AddScore(10);
+					pScore->AddScore(100);
 
 					//当たった場合はtrueを返す
 					return true;
@@ -406,12 +400,6 @@ bool CBullet3D::CollisionSpawner(void)
 
 					//ヒット処理
 					pObj->Hit();
-
-					//スコアの情報取得
-					CScore* pScore = CGame::GetScore();
-
-					//スコアの加算
-					pScore->AddScore(10);
 
 					//当たった場合はtrueを返す
 					return true;

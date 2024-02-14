@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include "number.h"
 #include "sound.h"
+#include "fade.h"
 
 //=============================================================================
 //コンストラクタ
@@ -104,8 +105,6 @@ HRESULT CRanking::Init(void)
 	//サウンド情報取得
 	CSound *pSound = CManager::GetManager()->GetSound();
 
-	pSound->PlaySound(CSound::SOUND_LABEL_SE_RANKING);
-
 #ifdef _DEBUG
 
 #else
@@ -168,24 +167,26 @@ void CRanking::Update(void)
 	//キーボードの取得
 	CInputKeyboard *pInputKeyboard = CManager::GetManager()->GetInputKeyboard();
 
+	//コントローラーへのポインタ取得
+	CInputController* pInputController = CManager::GetManager()->GetInputController();
+
 	//サウンド情報取得
 	CSound *pSound = CManager::GetManager()->GetSound();
 
 	m_nCtr++;		//カウンター加算
 
-	if (pInputKeyboard->GetTrigger(DIK_SPACE) == true && bUse == false)
+	if (pInputKeyboard->GetTrigger(DIK_SPACE) == true && bUse == false ||
+		pInputController->GetPress(pInputController->BUTTON_A, 0) == true && bUse == false)
 	{
 		//画面遷移
-		CManager::GetManager()->SetMode(CScene::MODE_TITLE);
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_TRANSITION);
+		CFade::GetInstance()->SetFade(CScene::MODE_TITLE);
 
 		bUse = true;
 	}
 	if (m_nCtr >= 350)
 	{
 		//画面遷移
-		CManager::GetManager()->SetMode(CScene::MODE_TITLE);
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_TRANSITION);
+		CFade::GetInstance()->SetFade(CScene::MODE_TITLE);
 
 		m_nCtr = 0;		//カウンターリセット
 		bUse = true;

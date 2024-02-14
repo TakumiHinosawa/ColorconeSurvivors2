@@ -21,6 +21,7 @@
 #include "tutorial.h"
 #include "ranking.h"
 #include "building.h"
+#include "fade.h"
 
 //*****************************************************************************************
 //静的メンバ変数
@@ -149,8 +150,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 		m_pDebugProc->Init();
 	}
 
-	//モードの初期化
-	m_pScene = CScene::Create(CScene::MODE_GAME);
+	CFade::Create(CScene::MODE_GAME);
 
 	return S_OK;
 }
@@ -240,8 +240,13 @@ void CManager::Uninit(void)
 		m_pDebugProc = NULL;
 	}
 
+	// フェードの終了
+	CFade::GetInstance()->Uninit();
+
 	//モードの終了処理
-	m_pScene->Uninit();
+	if (m_pScene != nullptr) {
+		m_pScene->Uninit();
+	}
 }
 
 //=========================================================================================
@@ -290,7 +295,11 @@ void CManager::Update(void)
 	}
 
 	//モードの更新処理
-	m_pScene->Update();
+	if (m_pScene != nullptr) {
+		m_pScene->Update();
+	}
+
+	CFade::GetInstance()->Update();
 }
 
 //=========================================================================================
@@ -426,10 +435,6 @@ void CManager::SetMode(CScene::MODE mode)
 
 		//リリースオール
 		CObject::ReleaseAll();
-	}
-	else
-	{
-		return;
 	}
 
 	//新しいモードの生成

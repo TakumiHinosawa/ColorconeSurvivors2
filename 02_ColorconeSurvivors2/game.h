@@ -31,6 +31,9 @@ class CPlayerX;
 class CBoss;
 class CObject;
 class CSkybox;
+class CHitpoint;
+class CHpbg;
+class CBlown;
 
 //*****************************************************************************************
 //ゲームクラス定義
@@ -50,21 +53,27 @@ public:
 	static CPlayerX *GetPlayer(void);
 	static CBoss* GetBoss(void);
 	static CScore *GetScore(void);
+	static CBlown* GetBlown(void);
 	static CCamera *GetCamera(void);
 	static CLight *GetLight(void);
 	static CObjectX *GetObjectX(void);
 	static CBuilding *GetBuilding(int nIdx);
 	static CSkybox* GetSkybox(void);
+	static CHitpoint* GetHitpoint(void);
+	static CHpbg* GetHpbg(void);
 
 private:
 	static CPlayerX *m_pPlayerX;
 	static CBoss* m_pBoss;
 	static CScore *m_pScore;
+	static CBlown* m_pBlown;
 	static CCamera *m_pCamera;
 	static CLight *m_pLight;
 	static CObjectX *m_pObjectX;
 	static CBuilding *m_apBuilding[NUM_BUILD];
 	static CSkybox* m_pSkybox;
+	static CHitpoint* m_pHitpoint;
+	static CHpbg* m_pHpbg;
 	int m_nCtr;
 };
 

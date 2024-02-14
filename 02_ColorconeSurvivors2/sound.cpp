@@ -12,27 +12,10 @@
 //*****************************************************************************
 CSound::SOUNDINFO m_aSoundInfo[CSound::SOUND_LABEL_MAX] =
 {
-	{ "data/BGM/jazz.wav", -1 },			//ゲーム
-	{ "data/SE/first.wav" , 0},				//ジャンプ
-	{ "data/SE/second.wav" , 0 },			//ジャンプ
-	{ "data/SE/down4.wav" , 0 },			//落下時
-	{ "data/SE/up.wav" , 0 },				//タイトル
-	{ "data/se/free_sound1.wav" , 0},		//スペース
-	{ "data/se/free_sound1011.wav" , 0 },	//ランキング
-	{ "data/se/1000m.wav" , 0 },	
-	{ "data/se/2000m.wav" , 0 },
-	{ "data/se/3000m.wav" , 0 },
-	{ "data/se/4000m.wav" , 0 },
-	{ "data/se/5000m.wav" , 0 },
-	{ "data/se/6000m.wav" , 0 },
-	{ "data/se/7000m.wav" , 0 },
-	{ "data/se/8000m.wav" , 0 },
-	{ "data/se/9000m.wav" , 0 },
-	{ "data/se/10000m.wav" , 0 },
-	{ "data/se/15000m.wav" , 0 },
-	{ "data/se/20000m.wav" , 0 },
-	{ "data/se/transition.wav" , 0 },
-	{ "data/BGM/titlebgm.wav", -1 },			
+	{ "data/SE/shot.wav", 0 },			
+	{ "data/BGM/game.wav", -1 },		
+	{ "data/BGM/title.wav", -1 },		
+	{ "data/SE/explosion.wav", 0 },
 };
 
 //=============================================================================

@@ -33,6 +33,7 @@ public:
 	void CollideBoss(void);
 	void CollideEnemy(void);
 	void Knockback(float knockbackForce, float angle);
+	void Pushout(void);
 
 private:
 	D3DXVECTOR3 m_OldPos;
@@ -41,6 +42,7 @@ private:
 	D3DXVECTOR3 m_BuildingPos;
 	int m_nTiming;
 	int m_nCtr;
+	int m_nRate;
 };
 
 #endif

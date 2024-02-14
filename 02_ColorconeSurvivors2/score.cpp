@@ -132,7 +132,7 @@ void CScore::SetScore(void)
 	for (int nCnt = 0; nCnt < NUM_PLACE; nCnt++)
 	{
 		//ƒXƒRƒA‚ÌÝ’èˆ—
-		m_apNumber[nCnt]->SetScore(D3DXVECTOR3(500.0f,10.0f,0.0f), nCnt, aTexU[nCnt]);
+		m_apNumber[nCnt]->SetScore(D3DXVECTOR3(100.0f,SCREEN_HEIGHT - 60.0f ,0.0f), nCnt, aTexU[nCnt]);
 	}
 }
 
@@ -175,79 +175,6 @@ void CScore::AddScore(int nValue)
 	aTexU[2] = m_nScore % 1000 / 100;
 	aTexU[3] = m_nScore % 100 / 10;
 	aTexU[4] = m_nScore % 10;
-
-	if (m_nScore > 1000 && m_Dist == 0)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_1000M);
-
-		m_Dist = 1;
-	}
-	if (m_nScore > 2000 && m_Dist == 1)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_2000M);
-
-		m_Dist = 2;
-	}
-	if (m_nScore > 3000 && m_Dist == 2)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_3000M);
-
-		m_Dist = 3;
-	}
-	if (m_nScore > 4000 && m_Dist == 3)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_4000M);
-
-		m_Dist = 4;
-	}
-	if (m_nScore > 5000 && m_Dist == 4)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_5000M);
-
-		m_Dist = 5;
-	}
-	if (m_nScore > 6000 && m_Dist == 5)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_6000M);
-
-		m_Dist = 6;
-	}
-	if (m_nScore > 7000 && m_Dist == 6)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_7000M);
-
-		m_Dist = 7;
-	}
-	if (m_nScore > 8000 && m_Dist == 7)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_8000M);
-
-		m_Dist = 8;
-	}
-	if (m_nScore > 9000 && m_Dist == 8)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_9000M);
-
-		m_Dist = 9;
-	}
-	if (m_nScore > 10000 && m_Dist == 9)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_10000M);
-
-		m_Dist = 10;
-	}
-	if (m_nScore > 15000 && m_Dist == 10)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_15000M);
-
-		m_Dist = 11;
-	}
-	if (m_nScore > 20000 && m_Dist == 11)
-	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_20000M);
-
-		m_Dist = 12;
-	}
 }
 
 //=========================================================================================

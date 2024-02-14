@@ -16,6 +16,7 @@
 #include "game.h"
 #include "bullet3D.h"
 #include "explosion3D.h"
+#include "blown.h"
 
 //=========================================================================================
 //マクロ定義
@@ -26,7 +27,7 @@
 #define AIRBORNE (20)			//浮遊時間
 #define ROTSPEED (0.7f)			//回転速度
 #define TIMING	 (6)			//弾発射の速度
-#define BULLETSPEED	(5.0f)		//弾速
+#define BULLETSPEED	(10.0f)		//弾速
 #define HEIGHT		(10.0f)		//高さ
 #define KNOCKBACK	(17.0f)
 
@@ -40,6 +41,7 @@ CPlayerX::CPlayerX()
 	m_BuildingPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_OldPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_nCtr = 0;
+	m_nRate = 0;
 }
 
 //=========================================================================================
@@ -83,6 +85,19 @@ void CPlayerX::Update(void)
 {
 	//プレイヤー操作処理
 	Controller();
+
+	m_nRate++;
+
+	if (m_nRate >= 60)
+	{
+		//ぶっ飛び加算
+		CBlown* pBlown = CGame::GetBlown();
+
+		//ぶっ飛び量の加算
+		pBlown->Add(2);
+
+		m_nRate = 0;
+	}
 }
 
 //=========================================================================================
@@ -199,7 +214,7 @@ void CPlayerX::Controller(void)
 					cosf(CameraRot.y - (D3DX_PI * 0.25f)) * BULLETSPEED));
 
 			//サウンドの再生
-			//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 			//カウンター初期化
 			m_nTiming = 0;
@@ -214,7 +229,7 @@ void CPlayerX::Controller(void)
 					cosf(CameraRot.y - (D3DX_PI * 0.75f)) * BULLETSPEED)));
 
 			//サウンドの再生
-			//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 			//カウンター初期化
 			m_nTiming = 0;
@@ -227,7 +242,7 @@ void CPlayerX::Controller(void)
 					cosf(CameraRot.y - (D3DX_PI * 0.5f)) * BULLETSPEED));
 
 			//サウンドの再生
-			//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 			//カウンター初期化
 			m_nTiming = 0;
@@ -248,7 +263,7 @@ void CPlayerX::Controller(void)
 					cosf(CameraRot.y - (-D3DX_PI * 0.25f)) * BULLETSPEED));
 
 			//サウンドの再生
-			//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 			//カウンター初期化
 			m_nTiming = 0;
@@ -263,7 +278,7 @@ void CPlayerX::Controller(void)
 					cosf(CameraRot.y - (-D3DX_PI * 0.75f)) * BULLETSPEED));
 
 			//サウンドの再生
-			//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 			//カウンター初期化
 			m_nTiming = 0;
@@ -276,7 +291,7 @@ void CPlayerX::Controller(void)
 					cosf(CameraRot.y - (-D3DX_PI * 0.5f)) * BULLETSPEED));
 
 			//サウンドの再生
-			//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 			//カウンター初期化
 			m_nTiming = 0;
@@ -291,7 +306,7 @@ void CPlayerX::Controller(void)
 			D3DXVECTOR3(sinf(CameraRot.y) * BULLETSPEED, 0.0f, cosf(CameraRot.y) * BULLETSPEED));
 
 		//サウンドの再生
-		//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+		pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 		//カウンター初期化
 		m_nTiming = 0;
@@ -305,7 +320,7 @@ void CPlayerX::Controller(void)
 			D3DXVECTOR3(-sinf(CameraRot.y) * BULLETSPEED, 0.0f, -cosf(CameraRot.y) * BULLETSPEED));
 
 		//サウンドの再生
-		//pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
+		pSound->PlaySound(CSound::SOUND_LABEL_SE_SHOT);
 
 		//カウンター初期化
 		m_nTiming = 0;
@@ -363,6 +378,8 @@ void CPlayerX::Controller(void)
 
 	//建物との当たり判定処理
 	CollisionBuilding();
+
+	Pushout();
 
 	if (m_nCtr > 0)
 	{
@@ -578,20 +595,28 @@ void CPlayerX::CollideBoss(void)
 					&& PlayerPos.z <= EnemyPos.z + vtxMax.z)
 				{//当たり判定
 
-					//爆発の生成
-					CExplosion3D::Create(EnemyPos);
+					//ノックバック
+					int nKnockBackRate = CGame::GetBlown()->Get();
+					D3DXVECTOR3 rot = pObj->GetRot();
+
+					m_nCtr = 10;
 
 					//サウンドの再生
 					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
-
-					//敵に自分が当たった時
-					//pObj->Uninit();
 
 					//スコアの情報取得
 					CScore* pScore = CGame::GetScore();
 
 					//スコアの加算
 					pScore->SubScore(100);
+
+					//ぶっ飛び加算
+					CBlown* pBlown = CGame::GetBlown();
+
+					//ぶっ飛び量の加算
+					pBlown->Add(10);
+
+					Knockback((float)nKnockBackRate / 5, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
 				}
 			}
 		}
@@ -640,27 +665,22 @@ void CPlayerX::CollideEnemy(void)
 					&& PlayerPos.z <= EnemyPos.z + vtxMax.z)
 				{//当たり判定
 
-					D3DXVECTOR3 rot = pObj->GetRot();
-
 					//ノックバック
-					Knockback(KNOCKBACK, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
+					int nKnockBackRate = CGame::GetBlown()->Get();
+					D3DXVECTOR3 rot = pObj->GetRot();
 
 					m_nCtr = 10;
 
-					//爆発の生成
-					//CExplosion3D::Create(EnemyPos);
+					//ぶっ飛び加算
+					CBlown* pBlown = CGame::GetBlown();
+
+					//ぶっ飛び量の加算
+					pBlown->Add(1);
+
+					Knockback((float)nKnockBackRate / 7, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
 
 					//サウンドの再生
 					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
-
-					//敵に自分が当たった時
-					//pObj->Uninit();
-
-					//スコアの情報取得
-					//CScore* pScore = CGame::GetScore();
-
-					//スコアの加算
-					//pScore->SubScore(100);
 				}
 			}
 		}
@@ -689,4 +709,137 @@ void CPlayerX::Knockback(float knockbackForce, float angle)
 	Pos += Velocity;
 	SetMove(Velocity);
 	SetPosition(Pos);
+}
+
+//=========================================================================================
+//プレイヤーと建物の当たり判定
+//=========================================================================================
+void CPlayerX::Pushout(void)
+{
+	//デバッグ情報取得
+	CDebugProc* pDebug = CManager::GetManager()->GetDebugProc();
+
+	CObject* pObj;
+
+	//サウンド情報取得
+	CSound* pSound = CManager::GetManager()->GetSound();
+
+	//プレイヤーの位置情報取得
+	D3DXVECTOR3 PlayerPos = GetPosition();
+
+	//プレイヤーの移動情報取得
+	D3DXVECTOR3 PlayerMove = GetMove();
+
+	//プレイヤーのサイズ保管用変数
+	D3DXVECTOR3 vtxMin, vtxMax;
+
+	//プレイヤーのサイズ取得
+	vtxMin = GetVtxMin();
+	vtxMax = GetVtxMax();
+
+	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
+	{
+		//オブジェクト情報取得
+		pObj = CObject::GetObject(nCnt);
+
+		if (pObj != NULL)
+		{//使用されているとき
+
+			if (pObj->GetType() == TYPE_BOSS)
+			{//建物の時
+
+				//敵の位置取得
+				D3DXVECTOR3 BuildingPosition = pObj->GetPosition();
+
+				//建物のサイズを取得
+				D3DXVECTOR3 BuildingVtxMax = pObj->GetVtxMax();
+				D3DXVECTOR3 BuildingVtxMin = pObj->GetVtxMin();
+
+				// ******************************		当たり判定		******************************* //
+
+				//------------------------------------------------------------------------
+				//	幅の判定
+				//------------------------------------------------------------------------
+				if (BuildingPosition.x + BuildingVtxMin.x <= PlayerPos.x + vtxMax.x
+					&& BuildingPosition.x + BuildingVtxMax.x >= PlayerPos.x + vtxMin.x
+					&& BuildingPosition.y + BuildingVtxMin.y <= m_OldPos.y + vtxMax.y
+					&& BuildingPosition.y + BuildingVtxMax.y >= m_OldPos.y + vtxMin.y)
+				{//幅の判定
+					if (BuildingPosition.z + BuildingVtxMax.z <= m_OldPos.z + vtxMin.z						
+						&& BuildingPosition.z + BuildingVtxMax.z > PlayerPos.z + vtxMin.z)
+					{
+						PlayerPos.z = BuildingPosition.z + BuildingVtxMax.z - vtxMin.z;
+					}
+					if (BuildingPosition.z + BuildingVtxMin.z >= m_OldPos.z + vtxMax.z
+						&& BuildingPosition.z + BuildingVtxMin.z < PlayerPos.z + vtxMax.z)
+					{
+						PlayerPos.z = BuildingPosition.z + BuildingVtxMin.z - vtxMax.z;
+					}
+				}
+
+				//------------------------------------------------------------------------
+				//横の判定
+				//------------------------------------------------------------------------
+				if (BuildingPosition.z + BuildingVtxMin.z <= PlayerPos.z + vtxMax.z
+					&& BuildingPosition.z + BuildingVtxMax.z >= PlayerPos.z + vtxMin.z
+					&& BuildingPosition.y + BuildingVtxMin.y <= m_OldPos.y + vtxMax.y
+					&& BuildingPosition.y + BuildingVtxMax.y >= m_OldPos.y + vtxMin.y)
+				{
+					if (BuildingPosition.x + BuildingVtxMin.x >= m_OldPos.x + vtxMax.x
+						&& BuildingPosition.x + BuildingVtxMin.x < PlayerPos.x + vtxMax.x)
+					{
+						PlayerPos.x = BuildingPosition.x + BuildingVtxMin.x - vtxMax.x - 0.001f;
+					}
+					if (BuildingPosition.x + BuildingVtxMax.x <= m_OldPos.x + vtxMin.x
+						&& BuildingPosition.x + BuildingVtxMax.x > PlayerPos.x + vtxMin.x)
+					{
+						PlayerPos.x = BuildingPosition.x + BuildingVtxMax.x - vtxMin.x;
+					}
+				}
+
+				//------------------------------------------------------------------------
+				//縦の判定
+				//------------------------------------------------------------------------
+				if (BuildingPosition.x + BuildingVtxMin.x <= PlayerPos.x + vtxMax.x
+					&& BuildingPosition.x + BuildingVtxMax.x >= PlayerPos.x + vtxMin.x
+					&& BuildingPosition.z + BuildingVtxMin.z <= PlayerPos.z + vtxMax.z
+					&& BuildingPosition.z + BuildingVtxMax.z >= PlayerPos.z + vtxMin.z)
+				{
+					if (BuildingPosition.y + BuildingVtxMin.y >= m_OldPos.y + vtxMax.y
+						&& BuildingPosition.y + BuildingVtxMin.y < PlayerPos.y + vtxMax.y)
+					{//　下の判定
+
+						//位置更新
+						PlayerPos.y = BuildingPosition.y + BuildingVtxMin.y - vtxMax.y;
+					}
+					if (BuildingPosition.y + BuildingVtxMax.y <= m_OldPos.y + vtxMin.y
+						&& BuildingPosition.y + BuildingVtxMax.y > PlayerPos.y + vtxMin.y)
+					{//　上の判定
+
+						//位置更新
+						PlayerPos.y = BuildingPosition.y + BuildingVtxMax.y - vtxMin.y + 0.001f;
+
+						//重力初期化
+						PlayerMove.y = 0.0f;
+					}
+				}
+				//現在のサイズの座標を保存する
+				m_VtxMax = BuildingVtxMax;
+				m_VtxMin = BuildingVtxMin;
+
+				//位置情報を保存
+				m_BuildingPos = BuildingPosition;
+			}
+		}
+	}
+
+	//位置情報更新
+	SetPosition(PlayerPos);
+
+	//移動情報更新
+	SetMove(PlayerMove);
+
+	//当たり判定
+	CollideBoss();
+	CollideEnemy();
 }

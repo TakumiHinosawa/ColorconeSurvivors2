@@ -17,6 +17,7 @@
 #include "game.h"
 #include "building.h"
 #include "sound.h"
+#include "fade.h"
 
 //=============================================================================
 //コンストラクタ
@@ -76,9 +77,9 @@ HRESULT CTitle::Init(void)
 	//********************************************************
 	//オブジェクト初期化
 	//********************************************************
-	m_pObjectX = CObjectX::Create("data\\MODEL\\title.x");
+	m_pObjectX = CObjectX::Create("data\\MODEL\\player_00.x");
 	m_pObjectX->SetPosition(D3DXVECTOR3(0.0f,90.0f, -200.0f));
-	m_pObjectX->SetRot(D3DXVECTOR3(0.5f,0.0f,0.0f));
+	m_pObjectX->SetRot(D3DXVECTOR3(0.0f,0.0f,0.0f));
 
 	//********************************************************
 	//テクスチャ読み込み
@@ -154,40 +155,33 @@ void CTitle::Update(void)
 	//キーボードの取得
 	CInputKeyboard *pInputKeyboard = CManager::GetManager()->GetInputKeyboard();
 
+	//コントローラーへのポインタ取得
+	CInputController* pInputController = CManager::GetManager()->GetInputController();
+
 	//サウンド情報取得
 	CSound *pSound = CManager::GetManager()->GetSound();
 
 	m_nTrans++;
 
-	if (pInputKeyboard->GetTrigger(DIK_SPACE) == true && bSound == false)
+	if (pInputKeyboard->GetTrigger(DIK_SPACE) == true && bSound == false ||
+		pInputController->GetPress(pInputController->BUTTON_A, 0) == true && bSound == false)
 	{
+		pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
 		bUse = true;
 		bSound = true;
-
-		//ジャンプ音
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_TITLE);
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_SPACE);
 	}
 	if (bUse == true)
 	{
 		m_nCtr++;
 	}
-	if (m_nCtr > 150)
+	if (m_nCtr > 100)
 	{
 		//画面遷移
-		CManager::GetManager()->SetMode(CScene::MODE_TUTORIAL);
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_TRANSITION);
+		CFade::GetInstance()->SetFade(CScene::MODE_GAME);
 
 		m_nCtr = 0;		//カウンター初期化
 	}
-	//if (m_nTrans >= 550)
-	//{
-	//	//画面遷移
-	//	CManager::GetManager()->SetMode(CScene::MODE_RANKING);
-	//	pSound->PlaySound(CSound::SOUND_LABEL_SE_TRANSITION);
 
-	//	m_nTrans = 0;
-	//}
 	//********************************************************
 	//ライトの更新処理
 	//********************************************************

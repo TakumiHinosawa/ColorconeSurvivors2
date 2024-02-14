@@ -15,6 +15,7 @@
 #include "debugproc.h"
 #include "camera.h"
 #include "game.h"
+#include "fade.h"
 
 //=========================================================================================
 //レンダラーのコンストラクタ
@@ -167,18 +168,6 @@ void CRenderer::Draw(void)
 		m_pD3DDevice->Clear(0, NULL,D3DCLEAR_ZBUFFER,D3DCOLOR_RGBA(0, 0, 0, 0), 1.0f, 0);
 
 		{
-			if (CManager::GetManager()->GetMode() == CScene::MODE_GAME)
-			{
-				//カメラ情報取得
-				CCamera *pCamera = CGame::GetCamera();
-
-				//カメラの描画
-				pCamera->SetCamera();
-
-			}
-		}
-
-		{
 			//デバッグ情報取得
 			CDebugProc *pDebug = CManager::GetManager()->GetDebugProc();
 
@@ -189,6 +178,8 @@ void CRenderer::Draw(void)
 				pDebug->Draw();
 			}
 		}
+
+		CFade::GetInstance()->Draw();
 
 		//ヴューポートを元に戻す
 		//	m_pD3DDevice->SetViewport(&viewportDef);

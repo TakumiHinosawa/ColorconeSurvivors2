@@ -27,17 +27,24 @@ public:
 	void Update(void);
 	void Draw(void);
 	void Hit(void);
+	int GetLife(void);
+	void SumLife(int nNum);
+	void MoveToRandomPosition();
 	static CBoss* Create(void);
 
 private:
-	static const int NUM_SPAWNER = 5;
+	static const int NUM_SPAWNER = 7;
 
 	void MoveToPosition(const D3DXVECTOR3& targetPosition);
 
+	int m_framesToWait;
+	int m_currentFrame;
 	int m_nLife;
 	int m_nCtr;
 	int m_nSpawnCtr;
 	D3DXVECTOR3 m_pos;
+	D3DXVECTOR3 m_move;
+	D3DXVECTOR3 m_targetPos;
 };
 
 #endif

@@ -1,9 +1,77 @@
-﻿  objectbillboard.cpp
+﻿  boss.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,66): warning C4100: 'fWidth': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,51): warning C4100: 'fHeight': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,40): warning C4100: 'rot': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,23): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\boss.cpp(121,13): warning C4189: 'pSpawner': ローカル変数が初期化されましたが、参照されていません
+  bullet3D.cpp
+  camera.cpp
+  effect.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\effect.cpp(172,20): warning C4189: 'pDevice': ローカル変数が初期化されましたが、参照されていません
+  EnemyX.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,66): warning C4100: 'fWidth': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,51): warning C4100: 'fHeight': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,40): warning C4100: 'rot': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,23): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\EnemyX.cpp(240,10): warning C4189: 'pSound': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\EnemyX.cpp(367,10): warning C4189: 'pSound': ローカル変数が初期化されましたが、参照されていません
+  explosion3D.cpp
+  game.cpp
+  hitpoint.cpp
+  hpbg.cpp
+  main.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\main.cpp(33,72): warning C4100: 'lpCmdLine': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\main.cpp(33,51): warning C4100: 'hInstancePrev': 引数は関数の本体部で 1 度も参照されません。
+  manager.cpp
+  modeimage.cpp
+  number.cpp
+  object.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\object.cpp(157,39): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\object.cpp(167,35): warning C4100: 'move': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\object.cpp(177,34): warning C4100: 'rot': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\object.cpp(182,37): warning C4100: 'vtxMax': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\object.cpp(192,37): warning C4100: 'vtxMin': 引数は関数の本体部で 1 度も参照されません。
+  object2D.cpp
+  object3D.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\object3D.cpp(181,20): warning C4189: 'pDevice': ローカル変数が初期化されましたが、参照されていません
+  objectbillboard.cpp
 C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\objectbillboard.cpp(209,83): warning C4100: 'fWidth': 引数は関数の本体部で 1 度も参照されません。
 C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\objectbillboard.cpp(209,68): warning C4100: 'fHeight': 引数は関数の本体部で 1 度も参照されません。
+  objectX.cpp
+  particle.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,66): warning C4100: 'fWidth': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,51): warning C4100: 'fHeight': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,40): warning C4100: 'rot': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,23): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+  playerX.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(132,14): warning C4458: 'bUse' を宣言すると、クラス メンバーが隠蔽されます
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\objectX.h(86,7): message : 'CObjectX::bUse' の宣言を確認してください
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(132,7): warning C4189: 'bUse': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(118,10): warning C4189: 'pSound': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(419,10): warning C4189: 'pSound': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(414,14): warning C4189: 'pDebug': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(704,10): warning C4189: 'pSound': ローカル変数が初期化されましたが、参照されていません
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\playerX.cpp(699,14): warning C4189: 'pDebug': ローカル変数が初期化されましたが、参照されていません
+  コンパイル中...
+  point.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\point.cpp(150,20): warning C4189: 'pDevice': ローカル変数が初期化されましたが、参照されていません
+  ranking.cpp
+  rankingnum.cpp
+  renderer.cpp
+  result.cpp
+  score.cpp
+  skybox.cpp
+  building.cpp
+  spawner.cpp
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,66): warning C4100: 'fWidth': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,51): warning C4100: 'fHeight': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,40): warning C4100: 'rot': 引数は関数の本体部で 1 度も参照されません。
+C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\particle.h(34,23): warning C4100: 'pos': 引数は関数の本体部で 1 度も参照されません。
+  time.cpp
+  title.cpp
+  tutorial.cpp
   コード生成しています。
-  2 of 411 functions ( 0.5%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    6 functions had inline decision re-evaluated but remain unchanged
+  Compiler switch has changed, fall back to full compilation.
+  All 446 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   コード生成が終了しました。
   2023_ActionGame_000.vcxproj -> C:\Users\student\Desktop\CS2\ColorconeSurvivors2\02_ColorconeSurvivors2\2023_ActionGame_000.exe

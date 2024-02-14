@@ -14,15 +14,20 @@
 #include "time.h"
 #include "game.h"
 #include "spawner.h"
+#include "particle.h"
 
 //=========================================================================================
 //ボスのコンストラクタ	
 //=========================================================================================
 CBoss::CBoss()
 {
-	m_nLife = 100;
+	m_nLife = 300;
 	m_nSpawnCtr = 0;
+	m_framesToWait = 0;
+	m_currentFrame = 0;
 	m_pos = {};
+	m_move = {};
+	m_targetPos = {};
 }
 
 //=========================================================================================
@@ -70,42 +75,62 @@ void CBoss::Update(void)
 	D3DXVECTOR3 pos = CObjectX::GetPosition();
 
 	//ボスの座標取得
-	D3DXVECTOR3 BossPos = CObjectX::GetPosition();
-	BossPos = D3DXVECTOR3(0.0f,-200.0f,300.0f);
-	m_pos = BossPos;
+	m_pos = CObjectX::GetPosition();
+	m_pos.y = -200.0f;
+	m_move = D3DXVECTOR3(5.0f, 0.0f, 5.0f);
 
-	D3DXVECTOR3 BossMove = CObjectX::GetMove();
-	BossMove = D3DXVECTOR3(0.0f, 0.0f, 300.0f);
+	//m_targetPos = m_pos;
 
-	float fRandX, fRandZ;
-	fRandX = (float)(rand() % 801) - 400.0f;
-	fRandZ = (float)(rand() % 801) - 400.0f;
+	if (m_framesToWait > 0) 
+	{
+		// 移動後の停滞中
+		m_framesToWait--;
+	}
+	else
+	{
+		// 移動中
+		D3DXVECTOR3 direction = m_targetPos - m_pos;
+		D3DXVec3Normalize(&direction, &direction);
 
-	// ランダムな位置に移動する
-	float randomX = static_cast<float>(rand() % 801) - 400.0f;
-	float randomZ = static_cast<float>(rand() % 801) - 400.0f;
+		m_pos.x += m_move.x * direction.x;
+		m_pos.y += m_move.y * direction.y;
+		m_pos.z += m_move.z * direction.z;
 
-	D3DXVECTOR3 targetPosition(randomX, 0.0f, randomZ);
+		m_currentFrame++;
 
-	//移動させる
-	MoveToPosition(targetPosition);
-
-	//移動設定
-	SetMove(m_pos);
-
-	//位置更新
-	SetPosition(BossPos);
+		if (m_currentFrame >= 60) 
+		{
+			// 一定フレーム移動したら再びランダムな位置に移動
+			MoveToRandomPosition();
+		}
+	}
 
 	if (m_nCtr >= 380 && m_nSpawnCtr < NUM_SPAWNER)
 	{
+		float fRandX, fRandZ;
+		fRandX = (float)(rand() % 801) - 400.0f;
+		fRandZ = (float)(rand() % 801) - 400.0f;
+
 		CSpawner* pSpawner = CSpawner::Create(D3DXVECTOR3(fRandX,-190.0f, fRandZ));
 
 		m_nCtr = 0;
 		m_nSpawnCtr++;
 	}
+	if (m_nLife <= 0)
+	{
+		CManager::GetManager()->SetMode(CScene::MODE_RANKING);
+		return;
+	}
+
+	//移動設定
+	SetMove(m_move);
+
+	//位置更新
+	SetPosition(m_pos);
 
 	//デバッグ表示
-	pDebug->Print("[ボス] ( X:%f Y:%f Z:%f )\n\n", pos.x, pos.y, pos.z);
+	pDebug->Print("\n[ボス位置] ( X:%f Y:%f Z:%f )\n", pos.x, pos.y, pos.z);
+	pDebug->Print("[ボス移動] ( X:%f Y:%f Z:%f )\n", m_move.x, m_move.y, m_move.z);
 	pDebug->Print("[ボス 体力] ( %d )\n\n",m_nLife);
 }
 
@@ -114,12 +139,25 @@ void CBoss::Update(void)
 //=========================================================================================
 void CBoss::MoveToPosition(const D3DXVECTOR3& targetPosition)
 {
-	// ゆっくりと移動する処理
-	float distance = D3DXVec3Length(&(targetPosition - m_pos));
-	float t = distance / 2.0f;
+	m_targetPos = targetPosition;
+	m_targetPos.y = -200.0f;
+	m_framesToWait = 0; // 移動後に一定フレーム停滞させる
+	m_currentFrame = 0;
+}
 
-	// 移動先までの位置をゆっくりと更新
-	m_pos += (targetPosition - m_pos) / t;
+//=========================================================================================
+//ボスのランダムな位置に移動
+//=========================================================================================
+void CBoss::MoveToRandomPosition()
+{
+	// ランダムな位置に移動する
+	float randomX = static_cast<float>(rand() % 801) - 400.0f;
+	float randomZ = static_cast<float>(rand() % 801) - 400.0f;
+
+	D3DXVECTOR3 targetPosition(randomX, -200.0f, randomZ);
+
+	// 移動させる
+	MoveToPosition(targetPosition);
 }
 
 //=========================================================================================
@@ -160,8 +198,21 @@ void CBoss::Hit(void)
 {
 	m_nLife--;
 
-	if (m_nLife <= 0)
-	{
-		Uninit();
-	}
+	CParticle::Create(GetPosition(), 0);
+}
+
+//=========================================================================================
+//HP取得処理
+//=========================================================================================
+int CBoss::GetLife(void)
+{
+	return m_nLife;
+}
+
+//=========================================================================================
+//HP減算処理
+//=========================================================================================
+void CBoss::SumLife(int nNum)
+{
+	m_nLife -= nNum;
 }

@@ -152,6 +152,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="blown.cpp" />
+    <ClCompile Include="blowngage.cpp" />
     <ClCompile Include="boss.cpp" />
     <ClCompile Include="bullet3D.cpp" />
     <ClCompile Include="camera.cpp" />
@@ -162,6 +164,7 @@
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hitpoint.cpp" />
+    <ClCompile Include="hpbg.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="light.cpp" />
     <ClCompile Include="main.cpp" />
@@ -175,6 +178,7 @@
     <ClCompile Include="objectX.cpp" />
     <ClCompile Include="particle.cpp" />
     <ClCompile Include="playerX.cpp" />
+    <ClCompile Include="point.cpp" />
     <ClCompile Include="ranking.cpp" />
     <ClCompile Include="rankingnum.cpp" />
     <ClCompile Include="renderer.cpp" />
@@ -190,6 +194,8 @@
     <ClCompile Include="tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="blown.h" />
+    <ClInclude Include="blowngage.h" />
     <ClInclude Include="boss.h" />
     <ClInclude Include="building.h" />
     <ClInclude Include="bullet3D.h" />
@@ -200,6 +206,7 @@
     <ClInclude Include="fade.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="hitpoint.h" />
+    <ClInclude Include="hpbg.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="light.h" />
     <ClInclude Include="main.h" />
@@ -213,6 +220,7 @@
     <ClInclude Include="objectX.h" />
     <ClInclude Include="particle.h" />
     <ClInclude Include="PlayerX.h" />
+    <ClInclude Include="point.h" />
     <ClInclude Include="ranking.h" />
     <ClInclude Include="rankingnum.h" />
     <ClInclude Include="renderer.h" />

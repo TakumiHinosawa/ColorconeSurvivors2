@@ -39,6 +39,9 @@ public:
 		TYPE_BOSS,			// ボス
 		TYPE_SPAWNER,		// スポナー
 		TYPE_SKYBOX,		// スカイボックス
+		TYPE_POINT,			// ポイント
+		TYPE_HITPOINT,		// ヒットポイント
+		TYPE_HPBG,
 		TYPE_MAX
 	}TYPE;
 

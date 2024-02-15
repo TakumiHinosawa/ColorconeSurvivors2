@@ -81,7 +81,24 @@ void CBlown::Uninit(void)
 //=========================================================================================
 void CBlown::Update(void)
 {
-	//セット
+	if (m_nBlown >= 0 && m_nBlown < 60 ) {
+		for (int nCnt = 0; nCnt < NUM_PLACE3; nCnt++)
+		{//白色
+			m_apNumber[nCnt]->SetCol(D3DXCOLOR(1.0f,1.0f,1.0f,1.0f));
+		}
+	}
+	else if (m_nBlown >= 60 && m_nBlown < 80){
+		for (int nCnt = 0; nCnt < NUM_PLACE3; nCnt++)
+		{//黄色
+			m_apNumber[nCnt]->SetCol(D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f));
+		}
+	}
+	else{
+		for (int nCnt = 0; nCnt < NUM_PLACE3; nCnt++)
+		{//赤色
+			m_apNumber[nCnt]->SetCol(D3DXCOLOR(1.0f, 0.0f, 0.0f, 1.0f));
+		}
+	}
 	Set();
 }
 

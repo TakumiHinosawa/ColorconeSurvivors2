@@ -106,27 +106,7 @@ void CEffect::Update(void)
 {
 	D3DXCOLOR col;
 
-	//ƒ‰ƒ“ƒ_ƒ€ƒJƒ‰[
-	int nType = rand() % 4;
-
-	switch (nType)
-	{
-	case 0:
-		col = D3DXCOLOR(1.0f, 0.0f, 0.0f, 0.75f);
-		break;
-
-	case 1:
-		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 0.75f);
-		break;
-
-	case 2:
-		col = D3DXCOLOR(0.0f, 0.0f, 1.0f, 0.75f);
-		break;
-
-	case 3:
-		col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.75f);
-		break;
-	}
+	col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.75f);
 
 	//ˆÚ“®—Ê‚Ìæ“¾
 	D3DXVECTOR3 move = GetMove();

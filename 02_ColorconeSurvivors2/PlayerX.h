@@ -42,7 +42,6 @@ private:
 	D3DXVECTOR3 m_BuildingPos;
 	int m_nTiming;
 	int m_nCtr;
-	int m_nRate;
 };
 
 #endif

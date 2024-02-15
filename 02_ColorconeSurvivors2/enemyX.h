@@ -31,6 +31,7 @@ public:
 	static void SetKillCount(int nNum);
 	void CollisionBuilding(void);
 	static CEnemyX *Create(void);
+	int GetNumSpawn(void);
 
 private:
 	static int m_Count;
@@ -38,6 +39,8 @@ private:
 	D3DXVECTOR3 m_VtxMax;
 	D3DXVECTOR3 m_VtxMin;
 	D3DXVECTOR3 m_BuildingPos;
+	int m_nLife;
+	static int m_nNumSpwan;
 
 	void PushoutCollision(void);
 };

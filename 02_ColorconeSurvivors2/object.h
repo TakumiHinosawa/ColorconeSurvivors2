@@ -42,6 +42,9 @@ public:
 		TYPE_POINT,			// ポイント
 		TYPE_HITPOINT,		// ヒットポイント
 		TYPE_HPBG,
+		TYPE_PERCENT,
+		TYPE_TITLELOGO,
+		TYPE_FASTENEMY,
 		TYPE_MAX
 	}TYPE;
 

@@ -111,7 +111,7 @@ void CBullet3D::Uninit(void)
 void CBullet3D::Update(void)
 {
 	//サウンドの取得
-	//CSound* pSound = CManager::GetManager()->GetSound();
+	CSound* pSound = CManager::GetManager()->GetSound();
 
 	//寿命を減らす
 	m_nLife--;
@@ -153,6 +153,8 @@ void CBullet3D::Update(void)
 
 			//終了処理
 			Uninit();
+
+			pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
 		}
 		return;
 	}
@@ -227,7 +229,7 @@ bool CBullet3D::CollisionEnemy(void)
 	vtxMax = GetVtxMax();
 
 	//サウンド情報取得
-	//CSound *pSound = CManager::GetManager()->GetSound();
+	CSound *pSound = CManager::GetManager()->GetSound();
 
 	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
 	{
@@ -254,7 +256,38 @@ bool CBullet3D::CollisionEnemy(void)
 				{//当たり判定
 
 					//サウンドの生成
-					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+					pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+
+					//爆発の生成
+					CExplosion3D::Create(EnemyPos);
+
+					//弾の終了処理
+					Uninit();
+
+					//ヒット処理
+					pObj->Hit();
+
+					//当たった場合はtrueを返す
+					return true;
+				}
+			}
+			if (pObj->GetType() == TYPE_FASTENEMY)
+			{//敵の時
+				//敵の位置取得
+				D3DXVECTOR3 EnemyPos = pObj->GetPosition();
+
+				//頂点座標取得
+				vtxMax = pObj->GetVtxMax();
+				vtxMin = pObj->GetVtxMin();
+
+				if (BulletPos.x >= EnemyPos.x + vtxMin.x
+					&& BulletPos.x <= EnemyPos.x + vtxMax.x
+					&& BulletPos.z >= EnemyPos.z + vtxMin.z
+					&& BulletPos.z <= EnemyPos.z + vtxMax.z)
+				{//当たり判定
+
+					//サウンドの生成
+					pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
 
 					//爆発の生成
 					CExplosion3D::Create(EnemyPos);
@@ -292,7 +325,7 @@ bool CBullet3D::CollisionBoss(void)
 	vtxMax = GetVtxMax();
 
 	//サウンド情報取得
-	//CSound* pSound = CManager::GetManager()->GetSound();
+	CSound* pSound = CManager::GetManager()->GetSound();
 
 	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
 	{
@@ -319,7 +352,7 @@ bool CBullet3D::CollisionBoss(void)
 				{//当たり判定
 
 					//サウンドの生成
-					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+					pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
 
 					//爆発の生成
 					CExplosion3D::Create(EnemyPos);
@@ -363,7 +396,7 @@ bool CBullet3D::CollisionSpawner(void)
 	vtxMax = GetVtxMax();
 
 	//サウンド情報取得
-	//CSound* pSound = CManager::GetManager()->GetSound();
+	CSound* pSound = CManager::GetManager()->GetSound();
 
 	for (int nCnt = 0; nCnt < MAX_CHAR; nCnt++)
 	{
@@ -390,7 +423,7 @@ bool CBullet3D::CollisionSpawner(void)
 				{//当たり判定
 
 					//サウンドの生成
-					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+					pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
 
 					//爆発の生成
 					CExplosion3D::Create(EnemyPos);

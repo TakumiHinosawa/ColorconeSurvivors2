@@ -16,6 +16,7 @@ CSound::SOUNDINFO m_aSoundInfo[CSound::SOUND_LABEL_MAX] =
 	{ "data/BGM/game.wav", -1 },		
 	{ "data/BGM/title.wav", -1 },		
 	{ "data/SE/explosion.wav", 0 },
+	{ "data/SE/enter.wav", 0 },
 };
 
 //=============================================================================

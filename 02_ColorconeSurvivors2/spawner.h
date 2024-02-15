@@ -30,12 +30,16 @@ public:
 	void Spawn(void);
 
 	void Hit(void);
+	int GetNumSpawner(void);
 
 	static CSpawner* Create(D3DXVECTOR3 pos);
 
 private:
 	int m_nSpwanCtr;
 	int m_nLife;
+	int m_nSpawnfast;
+	int m_nEnemValue;
+	static int m_Currentalive;
 };
 
 #endif

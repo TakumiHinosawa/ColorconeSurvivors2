@@ -34,6 +34,7 @@ class CSkybox;
 class CHitpoint;
 class CHpbg;
 class CBlown;
+class CPercent;
 
 //*****************************************************************************************
 //ゲームクラス定義
@@ -61,6 +62,7 @@ public:
 	static CSkybox* GetSkybox(void);
 	static CHitpoint* GetHitpoint(void);
 	static CHpbg* GetHpbg(void);
+	static CPercent* GetPercent(void);
 
 private:
 	static CPlayerX *m_pPlayerX;
@@ -74,6 +76,7 @@ private:
 	static CSkybox* m_pSkybox;
 	static CHitpoint* m_pHitpoint;
 	static CHpbg* m_pHpbg;
+	static CPercent* m_pPercent;
 	int m_nCtr;
 };
 

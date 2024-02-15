@@ -15,6 +15,7 @@
 #include "game.h"
 #include "spawner.h"
 #include "particle.h"
+#include "fade.h"
 
 //=========================================================================================
 //ボスのコンストラクタ	
@@ -79,8 +80,6 @@ void CBoss::Update(void)
 	m_pos.y = -200.0f;
 	m_move = D3DXVECTOR3(5.0f, 0.0f, 5.0f);
 
-	//m_targetPos = m_pos;
-
 	if (m_framesToWait > 0) 
 	{
 		// 移動後の停滞中
@@ -105,20 +104,23 @@ void CBoss::Update(void)
 		}
 	}
 
-	if (m_nCtr >= 380 && m_nSpawnCtr < NUM_SPAWNER)
+	CSpawner* pSpawner = nullptr;
+
+	if (m_nCtr >= 400 && pSpawner->GetNumSpawner() < NUM_SPAWNER)
 	{
 		float fRandX, fRandZ;
 		fRandX = (float)(rand() % 801) - 400.0f;
 		fRandZ = (float)(rand() % 801) - 400.0f;
 
-		CSpawner* pSpawner = CSpawner::Create(D3DXVECTOR3(fRandX,-190.0f, fRandZ));
+		pSpawner = CSpawner::Create(D3DXVECTOR3(fRandX, -190.0f, fRandZ));
 
 		m_nCtr = 0;
 		m_nSpawnCtr++;
 	}
 	if (m_nLife <= 0)
 	{
-		CManager::GetManager()->SetMode(CScene::MODE_RANKING);
+		//画面遷移
+		CFade::GetInstance()->SetFade(CScene::MODE_GAME);
 		return;
 	}
 

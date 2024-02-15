@@ -162,6 +162,7 @@
     <ClCompile Include="EnemyX.cpp" />
     <ClCompile Include="explosion3D.cpp" />
     <ClCompile Include="fade.cpp" />
+    <ClCompile Include="fastenemy.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="hitpoint.cpp" />
     <ClCompile Include="hpbg.cpp" />
@@ -177,13 +178,13 @@
     <ClCompile Include="objectbillboard.cpp" />
     <ClCompile Include="objectX.cpp" />
     <ClCompile Include="particle.cpp" />
+    <ClCompile Include="percent.cpp" />
     <ClCompile Include="playerX.cpp" />
     <ClCompile Include="point.cpp" />
     <ClCompile Include="ranking.cpp" />
     <ClCompile Include="rankingnum.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
-    <ClCompile Include="scene.cpp" />
     <ClCompile Include="score.cpp" />
     <ClCompile Include="skybox.cpp" />
     <ClCompile Include="sound.cpp" />
@@ -191,6 +192,7 @@
     <ClCompile Include="spawner.cpp" />
     <ClCompile Include="time.cpp" />
     <ClCompile Include="title.cpp" />
+    <ClCompile Include="titlelogo.cpp" />
     <ClCompile Include="tutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +206,7 @@
     <ClInclude Include="effect.h" />
     <ClInclude Include="enemyX.h" />
     <ClInclude Include="fade.h" />
+    <ClInclude Include="fastenemy.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="hitpoint.h" />
     <ClInclude Include="hpbg.h" />
@@ -219,19 +222,20 @@
     <ClInclude Include="objectbillboard.h" />
     <ClInclude Include="objectX.h" />
     <ClInclude Include="particle.h" />
+    <ClInclude Include="percent.h" />
     <ClInclude Include="PlayerX.h" />
     <ClInclude Include="point.h" />
     <ClInclude Include="ranking.h" />
     <ClInclude Include="rankingnum.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
-    <ClInclude Include="scene.h" />
     <ClInclude Include="score.h" />
     <ClInclude Include="skybox.h" />
     <ClInclude Include="sound.h" />
     <ClInclude Include="spawner.h" />
     <ClInclude Include="time.h" />
     <ClInclude Include="title.h" />
+    <ClInclude Include="titlelogo.h" />
     <ClInclude Include="tutorial.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

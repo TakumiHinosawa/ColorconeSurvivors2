@@ -17,11 +17,21 @@
 #include "effect.h"
 #include "particle.h"
 #include "boss.h"
+#include "fastenemy.h"
+
+//=========================================================================================
+//静的メンバ変数
+//=========================================================================================
+int CSpawner::m_Currentalive = 0;
 
 //=========================================================================================
 //マクロ定義
 //=========================================================================================
 #define ROTATION	(1.2f)		//移動量
+#define ENEMY_INTERVAL (100)
+#define FAST_INTERVAL (400)
+#define SPAWNER_LIFE (15)
+#define NUM_ENEMY (60)
 
 //=========================================================================================
 //スポナーのコンストラクタ	
@@ -29,7 +39,9 @@
 CSpawner::CSpawner()
 {
 	m_nSpwanCtr = 0;
-	m_nLife = 30;
+	m_nLife = SPAWNER_LIFE;
+	m_nSpawnfast = 0;
+	m_nEnemValue = 0;
 }
 
 //=========================================================================================
@@ -62,6 +74,8 @@ HRESULT CSpawner::Init(void)
 //=========================================================================================
 void CSpawner::Uninit(void)
 {
+	m_Currentalive--;
+
 	//オブジェクトの終了処理
 	CObjectX::Uninit();
 }
@@ -105,6 +119,8 @@ void CSpawner::Draw(void)
 //=========================================================================================
 CSpawner* CSpawner::Create(D3DXVECTOR3 pos)
 {
+	m_Currentalive++;
+
 	//ポインタの変数を宣言
 	CSpawner* pSpawner;
 
@@ -154,14 +170,39 @@ void CSpawner::Hit(void)
 void CSpawner::Spawn(void)
 {
 	m_nSpwanCtr++;		//カウンターの加算
+	m_nSpawnfast++;
 	D3DXVECTOR3 pos = GetPosition();
 
-	if (m_nSpwanCtr >= 100)
-	{
-		//敵の生成
-		CEnemyX* enemy = CEnemyX::Create();
-		enemy->SetPosition(pos);
+	CEnemyX* enemy = nullptr;
+	CFastEnemy* fastenemy = nullptr;
 
-		m_nSpwanCtr = 0;	//カウンター初期化
+	//敵の総数
+	m_nEnemValue = enemy->GetNumSpawn() + fastenemy->GetNumSpawn();
+
+	if (m_nEnemValue <= NUM_ENEMY) {
+		if (m_nSpwanCtr >= ENEMY_INTERVAL){
+			//敵の生成
+			enemy = CEnemyX::Create();
+			enemy->SetPosition(pos);
+
+			m_nSpwanCtr = 0;	//カウンター初期化
+		}
+		if (m_nSpawnfast >= FAST_INTERVAL){
+			fastenemy = CFastEnemy::Create();
+			fastenemy->SetPosition(pos);
+
+			m_nSpawnfast = 0;
+		}
 	}
+	else {
+		return;
+	}
+}
+
+//=========================================================================================
+//スポナー設定
+//=========================================================================================
+int CSpawner::GetNumSpawner(void)
+{
+	return m_Currentalive;
 }

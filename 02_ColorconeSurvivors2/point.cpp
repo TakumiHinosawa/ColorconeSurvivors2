@@ -113,24 +113,7 @@ void CPoint::Update(void)
 	}
 
 	D3DXCOLOR col;
-
-	//ƒ‰ƒ“ƒ_ƒ€ƒJƒ‰[
-	int nType = rand() % 3;
-
-	switch (nType)
-	{
-	case 0:
-		col = D3DXCOLOR(1.0f,0.0f,0.0f,1.0f);
-		break;
-
-	case 1:
-		col = D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f);
-		break;
-
-	case 2:
-		col = D3DXCOLOR(0.0f, 0.0f, 1.0f, 1.0f);
-		break;
-	}
+	col = D3DXCOLOR(1.0f, 1.0f, 0.0f, 1.0f);
 
 	//İ’èˆ—
 	SetCol(col);

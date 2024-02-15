@@ -26,7 +26,7 @@
 #define JUMPHEIGHT (16.0f)		//ジャンプ力
 #define AIRBORNE (20)			//浮遊時間
 #define ROTSPEED (0.7f)			//回転速度
-#define TIMING	 (6)			//弾発射の速度
+#define TIMING	 (5)			//弾発射の速度
 #define BULLETSPEED	(10.0f)		//弾速
 #define HEIGHT		(10.0f)		//高さ
 #define KNOCKBACK	(17.0f)
@@ -41,7 +41,6 @@ CPlayerX::CPlayerX()
 	m_BuildingPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_OldPos = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	m_nCtr = 0;
-	m_nRate = 0;
 }
 
 //=========================================================================================
@@ -85,19 +84,6 @@ void CPlayerX::Update(void)
 {
 	//プレイヤー操作処理
 	Controller();
-
-	m_nRate++;
-
-	if (m_nRate >= 60)
-	{
-		//ぶっ飛び加算
-		CBlown* pBlown = CGame::GetBlown();
-
-		//ぶっ飛び量の加算
-		pBlown->Add(2);
-
-		m_nRate = 0;
-	}
 }
 
 //=========================================================================================
@@ -616,7 +602,7 @@ void CPlayerX::CollideBoss(void)
 					//ぶっ飛び量の加算
 					pBlown->Add(10);
 
-					Knockback((float)nKnockBackRate / 5, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
+					Knockback((float)nKnockBackRate / 4, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
 				}
 			}
 		}
@@ -677,10 +663,40 @@ void CPlayerX::CollideEnemy(void)
 					//ぶっ飛び量の加算
 					pBlown->Add(1);
 
-					Knockback((float)nKnockBackRate / 7, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
+					Knockback((float)nKnockBackRate / 4, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
 
 					//サウンドの再生
 					//pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+				}
+			}
+			if (pObj->GetType() == TYPE_FASTENEMY)
+			{//敵の時
+				//敵の位置取得
+				D3DXVECTOR3 EnemyPos = pObj->GetPosition();
+
+				//頂点座標取得
+				vtxMax = pObj->GetVtxMax();
+				vtxMin = pObj->GetVtxMin();
+
+				if (PlayerPos.x >= EnemyPos.x + vtxMin.x
+					&& PlayerPos.x <= EnemyPos.x + vtxMax.x
+					&& PlayerPos.z >= EnemyPos.z + vtxMin.z
+					&& PlayerPos.z <= EnemyPos.z + vtxMax.z)
+				{//当たり判定
+
+					//ノックバック
+					int nKnockBackRate = CGame::GetBlown()->Get();
+					D3DXVECTOR3 rot = pObj->GetRot();
+
+					m_nCtr = 10;
+
+					//ぶっ飛び加算
+					CBlown* pBlown = CGame::GetBlown();
+
+					//ぶっ飛び量の加算
+					pBlown->Add(1);
+
+					Knockback((float)nKnockBackRate / 4, atan2f(GetPosition().x - pObj->GetPosition().x, GetPosition().z - pObj->GetPosition().z));
 				}
 			}
 		}
@@ -704,6 +720,7 @@ void CPlayerX::Knockback(float knockbackForce, float angle)
 
 	// 速度を更新してノックバックを適用
 	Velocity.x += knockbackX;
+	Velocity.y += 3.0f;
 	Velocity.z += knockbackZ;
 
 	Pos += Velocity;

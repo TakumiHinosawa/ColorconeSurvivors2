@@ -12,6 +12,7 @@
 #include "manager.h"
 #include "renderer.h"
 #include "object2d.h"
+#include "blown.h"
 
 //*****************************************************************************************
 //静的メンバ変数初期化
@@ -178,6 +179,26 @@ void CBlowngage::AddScore(int nCnt, int aTexU)
 	pVtx[1].tex = D3DXVECTOR2(0.1f + aTexU * 0.1f, 0.0f);
 	pVtx[2].tex = D3DXVECTOR2(0.0f + aTexU * 0.1f, 1.0f);
 	pVtx[3].tex = D3DXVECTOR2(0.1f + aTexU * 0.1f, 1.0f);
+
+	//頂点バッファをアンロックする
+	m_pObject2D->GetVtx()->Unlock();
+}
+
+//=========================================================================================
+//色の設定
+//=========================================================================================
+void CBlowngage::SetCol(D3DXCOLOR col)
+{
+	VERTEX_2D* pVtx;
+
+	//頂点バッファをロックし、頂点データへのポインタを取得
+	m_pObject2D->GetVtx()->Lock(0, 0, (void**)&pVtx, 0);
+
+	//位置を更新
+	pVtx[0].col = D3DXCOLOR(col.r,col.g,col.b,col.a);
+	pVtx[1].col = D3DXCOLOR(col.r,col.g,col.b,col.a);
+	pVtx[2].col = D3DXCOLOR(col.r,col.g,col.b,col.a);
+	pVtx[3].col = D3DXCOLOR(col.r,col.g,col.b,col.a);
 
 	//頂点バッファをアンロックする
 	m_pObject2D->GetVtx()->Unlock();

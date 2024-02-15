@@ -34,6 +34,7 @@ public:
 	void Draw(void);
 	static CBlowngage* Create(void);
 	void SetScore(D3DXVECTOR3 pos, int nCnt, int aTexU);
+	void SetCol(D3DXCOLOR col);
 	void AddScore(int nCnt, int aTexU);
 
 private:

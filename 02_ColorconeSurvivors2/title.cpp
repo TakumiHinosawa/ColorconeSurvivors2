@@ -18,16 +18,17 @@
 #include "building.h"
 #include "sound.h"
 #include "fade.h"
+#include "titlelogo.h"
 
 //=============================================================================
 //コンストラクタ
 //=============================================================================
 CTitle::CTitle()
 {
-	m_pCamera = NULL;
-	m_pModeImage = NULL;
-	m_pObjectX = NULL;
-	m_pLight = NULL;
+	m_pCamera = nullptr;
+	m_pModeImage = nullptr;
+	m_pObjectX = nullptr;
+	m_pLight = nullptr;
 	m_nCtr = 0;
 	m_nTrans = 0;
 	bUse = false;
@@ -55,7 +56,7 @@ HRESULT CTitle::Init(void)
 	//********************************************************
 	m_pCamera = new CCamera;
 
-	if (m_pCamera != NULL)
+	if (m_pCamera != nullptr)
 	{//使用されていないとき
 
 		//カメラの初期化処理
@@ -67,7 +68,7 @@ HRESULT CTitle::Init(void)
 	//********************************************************
 	m_pLight = new CLight;
 
-	if (m_pLight != NULL)
+	if (m_pLight != nullptr)
 	{//使用されていないとき
 
 		//ライトの初期化処理
@@ -78,16 +79,18 @@ HRESULT CTitle::Init(void)
 	//オブジェクト初期化
 	//********************************************************
 	m_pObjectX = CObjectX::Create("data\\MODEL\\player_00.x");
-	m_pObjectX->SetPosition(D3DXVECTOR3(0.0f,90.0f, -200.0f));
+	m_pObjectX->SetPosition(D3DXVECTOR3(0.0f,70.0f, -200.0f));
 	m_pObjectX->SetRot(D3DXVECTOR3(0.0f,0.0f,0.0f));
 
 	//********************************************************
 	//テクスチャ読み込み
 	//********************************************************
 	m_pModeImage->Load(0);
+	CTitlelogo::Load();
 
 	//背景生成
 	m_pModeImage = CModeImage::Create(0);
+	CTitlelogo::Create();
 
 	if (m_pModeImage != nullptr)
 	{
@@ -123,13 +126,14 @@ void CTitle::Uninit(void)
 
 	//********************************************************
 	//テクスチャ破棄
-	//********************************************************
+	//********************************************************	
 	m_pModeImage->Unload();
-
+	CTitlelogo::Unload();
+	
 	//********************************************************
 	//カメラの終了処理
 	//********************************************************
-	if (m_pCamera != NULL)
+	if (m_pCamera != nullptr)
 	{//使用されているとき
 
 		//カメラの初期化処理
@@ -139,7 +143,7 @@ void CTitle::Uninit(void)
 	//********************************************************
 	//ライトの終了処理
 	//********************************************************
-	if (m_pLight != NULL)
+	if (m_pLight != nullptr)
 	{//使用されているとき
 
 		//カメラの初期化処理
@@ -166,7 +170,7 @@ void CTitle::Update(void)
 	if (pInputKeyboard->GetTrigger(DIK_SPACE) == true && bSound == false ||
 		pInputController->GetPress(pInputController->BUTTON_A, 0) == true && bSound == false)
 	{
-		pSound->PlaySound(CSound::SOUND_LABEL_SE_EXPLOSION);
+		pSound->PlaySound(CSound::SOUND_LABEL_SE_ENTER);
 		bUse = true;
 		bSound = true;
 	}
@@ -185,7 +189,7 @@ void CTitle::Update(void)
 	//********************************************************
 	//ライトの更新処理
 	//********************************************************
-	if (m_pLight != NULL)
+	if (m_pLight != nullptr)
 	{//使用されているとき
 
 		//カメラの初期化処理
@@ -201,7 +205,7 @@ void CTitle::Draw(void)
 	//********************************************************
 	//カメラの設定処理
 	//********************************************************
-	if (m_pCamera != NULL)
+	if (m_pCamera != nullptr)
 	{//使用されているとき
 
 		//カメラの初期化処理
@@ -220,7 +224,7 @@ CTitle *CTitle::Create(void)
 	//生成
 	pTitle = new CTitle;
 
-	if (pTitle != NULL)
+	if (pTitle != nullptr)
 	{//使用されているとき
 
 		//初期化処理
